@@ -104,6 +104,24 @@ ul, ol {
   transition: 0.2s all;
 }
 
+.primary-btn2 {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #ffffff;
+  border-color: #ff5900;
+  border-width: 2px;
+  border-style: solid; /* Especifica el estilo del borde, en este caso, sólido */
+  border-radius: 40px;
+  color: #ff5900;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+}
+
+
+
 .primary-btn:hover, .primary-btn:focus {
   opacity: 0.9;
   color: #FFF;

@@ -1,0 +1,27 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 1;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown-item {
+    margin-bottom: 5px;
+  }
+  
+  /* Modificación para mostrar opciones una debajo de la otra */
+  .dropdown-content a {
+    display: block;
+  }

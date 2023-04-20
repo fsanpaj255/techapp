@@ -46,10 +46,10 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToUrl('Landing', 'fa-solid fa-font-awesome','/');
-        yield MenuItem::linkToCrud('Crud usuario', 'fa-solid fa-user', Usuario::Class);
+       yield MenuItem::linkToCrud('Crud usuario', 'fa-solid fa-user', Usuario::Class);
     }
 
-    public function configureUserMenu(UserInterface $user): UserMenu
+/*     public function configureUserMenu(UserInterface $user): UserMenu
     {
         // Usually it's better to call the parent method because that gives you a
         // user menu with some menu items already created ("sign out", "exit impersonation", etc.)
@@ -75,6 +75,6 @@ class DashboardController extends AbstractDashboardController
                 MenuItem::section(),
                 MenuItem::linkToLogout('Logout', 'fa fa-sign-out'),
             ]);
-    }
+    } */
 
 }

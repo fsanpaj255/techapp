@@ -37,6 +37,9 @@ class Producto
     #[ORM\Column(nullable: true)]
     private ?int $peso = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imagen = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -134,6 +137,18 @@ class Producto
     public function setPeso(?int $peso): self
     {
         $this->peso = $peso;
+
+        return $this;
+    }
+
+    public function getImagen(): ?string
+    {
+        return $this->imagen;
+    }
+
+    public function setImagen(?string $imagen): self
+    {
+        $this->imagen = $imagen;
 
         return $this;
     }

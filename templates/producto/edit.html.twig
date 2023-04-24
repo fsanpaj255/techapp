@@ -1,13 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Producto{% endblock %}
+{% block title %}Editar Producto{% endblock %}
 
 {% block body %}
+<div class="section">
+        <div class="container">
+         <a href="{{ path('app_producto_index') }}"><img src="/img/volver3.png"></a>
     <h1>Edit Producto</h1>
 
     {{ include('producto/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_producto_index') }}">back to list</a>
-
     {{ include('producto/_delete_form.html.twig') }}
+    </div>
+</div>
 {% endblock %}

@@ -3,56 +3,61 @@
 {% block title %}Producto{% endblock %}
 
 {% block body %}
+    <div class="section">
+        <div class="container">
+         <a href="{{ path('app_producto_index') }}"><img src="/img/volver3.png"></a>
     <h1>Producto</h1>
 
     <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ producto.id }}</td>
+                <td class="fuentenegra">{{ producto.id }}</td>
             </tr>
             <tr>
                 <th>Precio</th>
-                <td>{{ producto.precio }}</td>
+                <td class="fuentenegra">{{ producto.precio }}</td>
             </tr>
             <tr>
                 <th>Nombre</th>
-                <td>{{ producto.nombre }}</td>
+                <td class="fuentenegra">{{ producto.nombre }}</td>
             </tr>
             <tr>
-                <th>Descripcion</th>
-                <td>{{ producto.descripcion }}</td>
+                <th>Descripción</th>
+                <td class="fuentenegra">{{ producto.descripcion }}</td>
             </tr>
             <tr>
                 <th>Ancho</th>
-                <td>{{ producto.ancho }}</td>
+                <td class="fuentenegra">{{ producto.ancho }}</td>
             </tr>
             <tr>
                 <th>Largo</th>
-                <td>{{ producto.largo }}</td>
+                <td class="fuentenegra">{{ producto.largo }}</td>
             </tr>
             <tr>
                 <th>Modelo</th>
-                <td>{{ producto.modelo }}</td>
+                <td class="fuentenegra">{{ producto.modelo }}</td>
             </tr>
             <tr>
                 <th>Color</th>
-                <td>{{ producto.color }}</td>
+                <td class="fuentenegra">{{ producto.color }}</td>
             </tr>
             <tr>
                 <th>Peso</th>
-                <td>{{ producto.peso }}</td>
+                <td class="fuentenegra">{{ producto.peso }}</td>
             </tr>
             <tr>
                 <th>Imagen</th>
-                <td>{{ producto.imagen }}</td>
+                <td><img class="imgsizecrud" src="/img/{{ producto.imagen }}"></td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_producto_index') }}">back to list</a>
-
-    <a href="{{ path('app_producto_edit', {'id': producto.id}) }}">edit</a>
+    <div id="button-container">
+    <a class="btn-editar" href="{{ path('app_producto_edit', {'id': producto.id}) }}"><img src="/img/lapiz.png"></a>
 
     {{ include('producto/_delete_form.html.twig') }}
+            ></div>
+       </div>
+</div>
 {% endblock %}

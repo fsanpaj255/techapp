@@ -1,3 +1,4 @@
+/* menu despegable de perfil usuario navbar */
 .dropdown {
     position: relative;
     display: inline-block;
@@ -25,3 +26,45 @@
   .dropdown-content a {
     display: block;
   }
+
+ /*  tamano crud imagen */
+
+.imgsizecrud{
+  width: 10%;
+}
+
+.fuentenegra{
+  color: black;
+}
+
+/* boton borrar */
+
+.btn-delete {
+  background-color: red;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+.btn-editar {
+  background-color: white;
+  color: grey;
+  border-radius: 20px;
+  border: 2px solid grey;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+/* div espaciador de botones */
+
+#button-container {
+  display: flex;
+  justify-content: space-between;
+}

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Producto;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,15 +13,69 @@ class ProductoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('precio')
-            ->add('nombre')
-            ->add('descripcion')
-            ->add('ancho')
-            ->add('largo')
-            ->add('modelo')
-            ->add('color')
-            ->add('peso')
-            ->add('imagen')
+        ->add('precio', null, [
+            'attr' => [
+                'class' => 'form-group'
+            ],'label_attr' => [
+                'class' => 'input'
+            ]
+        ])
+            ->add('nombre', null, [
+                'attr' => [
+                    'class' => 'form-group'
+                ],'label_attr' => [
+                    'class' => 'input'
+                ]
+            ])
+            ->add('descripcion', null, [
+                'attr' => [
+                    'class' => 'form-group'
+                ],'label_attr' => [
+                    'class' => 'input'
+                ]
+            ])
+            ->add('ancho', null, [
+                'attr' => [
+                    'class' => 'form-group'
+                ],'label_attr' => [
+                    'class' => 'input'
+                ]
+            ])
+            ->add('largo', null, [
+                'attr' => [
+                    'class' => 'form-group'
+                ],'label_attr' => [
+                    'class' => 'input'
+                ]
+            ])
+            ->add('modelo', null, [
+                'attr' => [
+                    'class' => 'form-group'
+                ],'label_attr' => [
+                    'class' => 'input'
+                ]
+            ])
+            ->add('color', null, [
+                'attr' => [
+                    'class' => 'form-group'
+                ],'label_attr' => [
+                    'class' => 'input'
+                ]
+            ])
+            ->add('peso', null, [
+                'attr' => [
+                    'class' => 'form-group'
+                ],'label_attr' => [
+                    'class' => 'input'
+                ]
+            ])
+            ->add('imagen', FileType::class, [
+                'attr' => [
+                    'class' => 'form-group'
+                ],'label_attr' => [
+                    'class' => 'input'
+                ]
+            ])
         ;
     }
 

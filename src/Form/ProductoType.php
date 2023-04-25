@@ -69,12 +69,11 @@ class ProductoType extends AbstractType
                     'class' => 'input'
                 ]
             ])
-            ->add('imagen', FileType::class, [
-                'attr' => [
-                    'class' => 'form-group'
-                ],'label_attr' => [
-                    'class' => 'input'
-                ]
+            ->add('imagen', VichImageType::class, [
+                'label' => 'Cargar imagen',
+                'required' => false,
+                'allow_delete' => true,
+                'download_label' => 'Ver imagen',
             ])
         ;
     }

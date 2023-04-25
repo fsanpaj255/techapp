@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ProductoType extends AbstractType
 {
@@ -69,7 +70,7 @@ class ProductoType extends AbstractType
                     'class' => 'input'
                 ]
             ])
-            ->add('imagen', VichImageType::class, [
+            ->add('imageFile', VichImageType::class, [
                 'label' => 'Cargar imagen',
                 'required' => false,
                 'allow_delete' => true,

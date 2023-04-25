@@ -35,7 +35,7 @@
                 <td class="fuentenegra">{{ producto.modelo }}</td>
                 <td class="fuentenegra">{{ producto.color }}</td>
                 <td class="fuentenegra">{{ producto.peso }}</td>
-                <td class="fuentenegra"><img class="imgsizecrud" src="/img/{{ producto.imagen }}"></td>
+                <td class="fuentenegra"><img class="imgsizecrud" src="/img/{{ producto.imageName }}"></td>
                 <td>
                     <a href="{{ path('app_producto_show', {'id': producto.id}) }}"><img src="/img/lupa.png"></a>
                     <a href="{{ path('app_producto_edit', {'id': producto.id}) }}"><img src="/img/lapiz.png"></a>

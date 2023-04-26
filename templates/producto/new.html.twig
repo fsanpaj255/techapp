@@ -5,16 +5,12 @@
 {% block body %}
         <div class="section">
         <div class="container">
-        <div class="row">
-         <div class="col-md-7">
-          <div class="billing-details">
-         <a href="{{ path('app_producto_index') }}"><img src="/img/volver3.png"></a>
-    <h1>Ingresar nuevo producto</h1>
-
-    {{ include('producto/_form.html.twig') }}
-                                </div>
-                         </div>
-                </div>
+             <a href="{{ path('app_producto_index') }}"><img src="/img/volver3.png"></a>
+                 <h1>Ingresar nuevo producto</h1>
         </div>
-</div>
+          </div>
+    
+        
+    {{ include('producto/_form.html.twig') }}
+
 {% endblock %}

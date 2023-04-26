@@ -1,4 +1,36 @@
-{{ form_start(form) }}
+ <div class="section">
+        <div class="container">
+        <div class="row">
+         <div class="col-md-7">
+          <div class="billing-details">
+          <div class="form-container">
+            <div class="form-column"> 
+  {{ form_start(form) }}
+  {{ form_label(form.precio) }}
+  {{ form_widget(form.precio)}}
+  {{ form_label(form.nombre) }}
+  {{ form_widget(form.nombre)}}
+  {{ form_label(form.descripcion)}}
+  {{ form_widget(form.descripcion)}}
+  {{ form_label(form.modelo) }}
+  {{ form_widget(form.modelo)}}
+  </div>
+    <div class="form-column"> 
+  {{ form_label(form.largo) }}
+  {{ form_widget(form.largo)}}
+  {{ form_label(form.ancho) }}
+  {{ form_widget(form.ancho)}}
+  {{ form_label(form.color) }}
+  {{ form_widget(form.color)}}
+  {{ form_label(form.peso) }}
+   {{ form_widget(form.peso) }}
+   </div>
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+                                  </div>
+                                </div>
+                         </div>
+                </div>
+                <button class="primary-btn">{{ button_label|default('Guardar') }}</button>
+                {{ form_end(form) }}
+        </div>
+</div>

@@ -68,3 +68,17 @@
   display: flex;
   justify-content: space-between;
 }
+
+
+/* containers gpt */
+
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1em;
+}

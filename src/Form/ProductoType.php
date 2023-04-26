@@ -74,7 +74,10 @@ class ProductoType extends AbstractType
                 'label' => 'Cargar imagen',
                 'required' => false,
                 'allow_delete' => true,
-                'download_label' => 'Ver imagen',
+                'download_label' => 'Descargar imagen',
+                'attr' => [
+                    'class' => 'imgsizecrud'
+                ]
             ])
         ;
     }

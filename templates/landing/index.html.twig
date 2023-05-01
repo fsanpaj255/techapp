@@ -89,6 +89,7 @@
 								<div id="tab1" class="tab-pane active">
 									<div class="products-slick" data-nav="#slick-nav-1">
 										<!-- product -->
+										 {% for producto in listaproductos %}
 										<div class="product">
 											<div class="product-img">
 												<img src="./img/product01.png" alt="">
@@ -99,7 +100,7 @@
 											</div>
 											<div class="product-body">
 												<p class="product-category">Categoria</p>
-												<h3 class="product-name"><a href="#">product name goes here</a></h3>
+												<h3 class="product-name"><a href="#">{{producto.nombre}}</a></h3>
 												<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
@@ -118,6 +119,7 @@
 												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Añadir al carrito</button>
 											</div>
 										</div>
+										 {% endfor %}
 										<!-- /product -->
 
 										<!-- product -->

@@ -82,3 +82,8 @@
   flex-direction: column;
   margin-right: 1em;
 }
+
+.img-producto-landing{
+  width: 213px;
+  height: 213px;
+}

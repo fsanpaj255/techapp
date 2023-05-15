@@ -57,7 +57,7 @@
 					<!-- Product details -->
 					<div class="col-md-5">
 						<div class="product-details">
-							<h2 class="product-name">{{producto.id}}</h2>
+							<h2 class="product-name">{{producto.nombre}}</h2>
 							<div>
 								<div class="product-rating">
 									<i class="fa fa-star"></i>
@@ -69,10 +69,10 @@
 								<a class="review-link" href="#">10 Review(s) | Add your review</a>
 							</div>
 							<div>
-								<h3 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h3>
-								<span class="product-available">In Stock</span>
+								<h3 class="product-price">{{producto.precio}} <del class="product-old-price">$990.00</del></h3>
+								<span class="product-available">Disponible</span>
 							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<p>{{producto.descripcion}}</p>
 
 							<div class="product-options">
 								<label>
@@ -98,7 +98,7 @@
 										<span class="qty-down">-</span>
 									</div>
 								</div>
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Añadir al carrito</button>
 							</div>
 
 							<ul class="product-btns">

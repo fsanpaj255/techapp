@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\UserMenu;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\Entity\Usuario;
+use App\Entity\Producto;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -47,6 +48,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToUrl('Landing', 'fa-solid fa-font-awesome','/');
        yield MenuItem::linkToCrud('Crud usuario', 'fa-solid fa-user', Usuario::Class);
+       yield MenuItem::linkToCrud('Crud usuario', 'fa-solid fa-user', Producto::Class);
     }
 
     public function configureUserMenu(UserInterface $user): UserMenu

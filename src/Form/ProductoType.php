@@ -72,12 +72,30 @@ class ProductoType extends AbstractType
                 ]
             ])
             ->add('imageFile', VichImageType::class, [
-                'label' => 'Cargar imagen',
+                'label' => 'Cargar imagen ALZADA',
                 'required' => false,
                 'allow_delete' => true,
                 'download_label' => 'Descargar imagen',
                 'attr' => [
-                    'class' => 'imgsizecrud'
+                    'class' => ''
+                ]
+            ])
+            ->add('imageFile2', VichImageType::class, [
+                'label' => 'Cargar imagen PLANTA',
+                'required' => false,
+                'allow_delete' => true,
+                'download_label' => 'Descargar imagen',
+                'attr' => [
+                    'class' => ''
+                ]
+            ])
+            ->add('imageFile3', VichImageType::class, [
+                'label' => 'Cargar imagen PERFIL',
+                'required' => false,
+                'allow_delete' => true,
+                'download_label' => 'Descargar imagen',
+                'attr' => [
+                    'class' => ''
                 ]
             ])
             ->add('categoria', ChoiceType::class, [

@@ -50,6 +50,27 @@ class Producto
     #[ORM\Column(nullable: true)]
     private ?int $imageSize = null;
 
+        // NOTE: This is not a mapped field of entity metadata, just a simple property.
+        #[Vich\UploadableField(mapping: 'producto', fileNameProperty: 'imageName2', size: 'imageSize2')]
+        private  $imageFile2 = null;
+    
+        #[ORM\Column(nullable: true)]
+        private ?string $imageName2 = null;
+    
+        #[ORM\Column(nullable: true)]
+        private ?int $imageSize2 = null;
+
+
+            // NOTE: This is not a mapped field of entity metadata, just a simple property.
+    #[Vich\UploadableField(mapping: 'producto', fileNameProperty: 'imageName3', size: 'imageSize3')]
+    private  $imageFile3 = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName3 = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $imageSize3 = null;
+
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
@@ -193,6 +214,89 @@ class Producto
     {
         return $this->imageSize;
     }
+
+
+
+
+
+
+    public function setImageFile2(?File $imageFile2 = null): void
+    {
+        $this->imageFile = $imageFile2;
+
+        if (null !== $imageFile2) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile2(): ?File
+    {
+        return $this->imageFile2;
+    }
+
+    public function setImageName2(?string $imageName2): void
+    {
+        $this->imageName2 = $imageName2;
+    }
+
+    public function getImageName2(): ?string
+    {
+        return $this->imageName2;
+    }
+
+    public function setImageSize2(?int $imageSize2): void
+    {
+        $this->imageSize2 = $imageSize2;
+    }
+
+    public function getImageSize2(): ?int
+    {
+        return $this->imageSize2;
+    }
+
+
+
+
+
+    public function setImageFile3(?File $imageFile3 = null): void
+    {
+        $this->imageFile3 = $imageFile3;
+
+        if (null !== $imageFile3) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile3(): ?File
+    {
+        return $this->imageFile3;
+    }
+
+    public function setImageName3(?string $imageName3): void
+    {
+        $this->imageName3 = $imageName3;
+    }
+
+    public function getImageName3(): ?string
+    {
+        return $this->imageName3;
+    }
+
+    public function setImageSize3(?int $imageSize3): void
+    {
+        $this->imageSize3 = $imageSize3;
+    }
+
+    public function getImageSize3(): ?int
+    {
+        return $this->imageSize3;
+    }
+
+
 
     public function getCategoria(): ?string
     {

@@ -56,6 +56,9 @@ class Producto
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $categoria = null;
+
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the update. If this
@@ -202,5 +205,17 @@ class Producto
     public function getImageSize(): ?int
     {
         return $this->imageSize;
+    }
+
+    public function getCategoria(): ?string
+    {
+        return $this->categoria;
+    }
+
+    public function setCategoria(?string $categoria): self
+    {
+        $this->categoria = $categoria;
+
+        return $this;
     }
 }

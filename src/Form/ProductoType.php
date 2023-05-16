@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class ProductoType extends AbstractType
 {
@@ -35,19 +36,19 @@ class ProductoType extends AbstractType
                     'class' => 'input'
                 ]
             ])
-            ->add('ancho', null, [
+            ->add('tamano', ChoiceType::class, [
+                'choices' => [
+                    'XL' => 'XL',
+                    'L' => 'L',
+                    'M' => 'M',
+                    'S' => 'S',
+                ],
                 'attr' => [
-                    'class' => 'form-group'
-                ],'label_attr' => [
-                    'class' => 'input'
-                ]
-            ])
-            ->add('largo', null, [
-                'attr' => [
-                    'class' => 'form-group'
-                ],'label_attr' => [
-                    'class' => 'input'
-                ]
+                    'class' => 'form-group',
+                ],
+                'label_attr' => [
+                    'class' => 'input',
+                ],
             ])
             ->add('modelo', null, [
                 'attr' => [
@@ -78,6 +79,23 @@ class ProductoType extends AbstractType
                 'attr' => [
                     'class' => 'imgsizecrud'
                 ]
+            ])
+            ->add('categoria', ChoiceType::class, [
+                'choices' => [
+                    'Portatil' => 'Portatil',
+                    'Sobremesa' => 'Sobremesa',
+                    'Teléfono' => 'Teléfono',
+                    'Periférico' => 'Periférico',
+                    'Electrodoméstico' => 'Electrodoméstico',
+                    'Consola' => 'Consola',
+                    'Videojuego' => 'Videojuego',
+                ],
+                'attr' => [
+                    'class' => 'form-group',
+                ],
+                'label_attr' => [
+                    'class' => 'input',
+                ],
             ])
         ;
     }

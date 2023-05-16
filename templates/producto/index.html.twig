@@ -14,11 +14,11 @@
                 <th>Precio</th>
                 <th>Nombre</th>
                 <th>Descripción</th>
-                <th>Ancho</th>
-                <th>Largo</th>
+                <th>Tamaño</th>
                 <th>Modelo</th>
                 <th>Color</th>
                 <th>Peso</th>
+                <th>Categoria</th>
                 <th>Imagen</th>
                 <th>Mostrar/Editar</th>
             </tr>
@@ -30,11 +30,11 @@
                 <td class="fuentenegra">{{ producto.precio }}</td>
                 <td class="fuentenegra">{{ producto.nombre }}</td>
                 <td class="fuentenegra">{{ producto.descripcion }}</td>
-                <td class="fuentenegra">{{ producto.ancho }}</td>
-                <td class="fuentenegra">{{ producto.largo }}</td>
+                <td class="fuentenegra">{{ producto.tamano }}</td>
                 <td class="fuentenegra">{{ producto.modelo }}</td>
                 <td class="fuentenegra">{{ producto.color }}</td>
                 <td class="fuentenegra">{{ producto.peso }}</td>
+                 <td class="fuentenegra">{{ producto.categoria }}</td>
                 <td class="fuentenegra"><img class="imgsizecrud" src="/img/{{ producto.imageName }}"></td>
                 <td>
                     <a href="{{ path('app_producto_show', {'id': producto.id}) }}"><img src="/img/lupa.png"></a>

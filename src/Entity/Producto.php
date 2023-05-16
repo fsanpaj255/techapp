@@ -27,11 +27,8 @@ class Producto
     #[ORM\Column(length: 500, nullable: true)]
     private ?string $descripcion = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $ancho = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?int $largo = null;
+    #[ORM\Column(length: 5, nullable: true)]
+    private ?string $tamano = null;
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $modelo = null;
@@ -110,28 +107,18 @@ class Producto
         return $this;
     }
 
-    public function getAncho(): ?int
-    {
-        return $this->ancho;
+    public function getTamano(): ?string
+    {   
+        return $this->tamano;
+
     }
 
-    public function setAncho(?int $ancho): self
-    {
-        $this->ancho = $ancho;
-
+    public function setTamano(?string $tamano): self
+    {   
+        
+        $this->tamano = $tamano;
         return $this;
-    }
 
-    public function getLargo(): ?int
-    {
-        return $this->largo;
-    }
-
-    public function setLargo(?int $largo): self
-    {
-        $this->largo = $largo;
-
-        return $this;
     }
 
     public function getModelo(): ?string

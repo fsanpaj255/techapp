@@ -222,7 +222,7 @@ class Producto
 
     public function setImageFile2(?File $imageFile2 = null): void
     {
-        $this->imageFile = $imageFile2;
+        $this->imageFile2 = $imageFile2;
 
         if (null !== $imageFile2) {
             // It is required that at least one field changes if you are using doctrine

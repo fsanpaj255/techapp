@@ -14,15 +14,15 @@
 					<div class="col-md-5 col-md-push-2">
 						<div id="product-main-img">
 							<div class="product-preview">
-								<img src="./img/product01.png" alt="">
+								<img  src="/img/{{ producto.imageName }}" alt="">
 							</div>
 
 							<div class="product-preview">
-								<img src="./img/product03.png" alt="">
+								<img   src="/img/{{ producto.imageName2 }}" alt="">
 							</div>
 
 							<div class="product-preview">
-								<img src="./img/product06.png" alt="">
+								<img   src="/img/{{ producto.imageName3 }}" alt="">
 							</div>
 
 							<div class="product-preview">
@@ -36,15 +36,15 @@
 					<div class="col-md-2  col-md-pull-5">
 						<div id="product-imgs">
 							<div class="product-preview">
-								<img src="./img/product01.png" alt="">
+								<img  src="/img/{{ producto.imageName }}" alt="">
 							</div>
 
 							<div class="product-preview">
-								<img src="./img/product03.png" alt="">
+								<img  src="/img/{{ producto.imageName2 }}" alt="">
 							</div>
 
 							<div class="product-preview">
-								<img src="./img/product06.png" alt="">
+								<img  src="/img/{{ producto.imageName3 }}" alt="">
 							</div>
 
 							<div class="product-preview">
@@ -76,22 +76,27 @@
 
 							<div class="product-options">
 								<label>
-									Size
+									Tamaño 
 									<select class="input-select">
-										<option value="0">X</option>
+										<option value="0">XL</option>
+										<option value="0">L</option>
+										<option value="0">M</option>
+										<option value="0">S</option>
 									</select>
 								</label>
 								<label>
 									Color
 									<select class="input-select">
-										<option value="0">Red</option>
+										<option value="0">Blanco</option>
+										<option value="0">Negro</option>
+										<option value="0">Gris</option>
 									</select>
 								</label>
 							</div>
 
 							<div class="add-to-cart">
 								<div class="qty-label">
-									Qty
+									Cant
 									<div class="input-number">
 										<input type="number">
 										<span class="qty-up">+</span>
@@ -108,8 +113,8 @@
 
 							<ul class="product-links">
 								<li>Category:</li>
-								<li><a href="#">Headphones</a></li>
-								<li><a href="#">Accessories</a></li>
+								<li><a href="#">{{producto.precio}}</a></li>
+								
 							</ul>
 
 							<ul class="product-links">

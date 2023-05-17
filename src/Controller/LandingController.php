@@ -18,5 +18,6 @@ class LandingController extends AbstractController
             'listaproductos' => $productosRepository->findAll(),
         ]);
     }
+    
 
 }

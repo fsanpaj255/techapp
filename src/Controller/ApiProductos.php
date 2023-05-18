@@ -1,7 +1,9 @@
 <?php
  
 namespace App\Controller;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Routing\Annotation\Route;
@@ -90,6 +92,69 @@ class ApiProductos extends AbstractController
           
         return $this->json($data);
     }
+
+    #[Route("/producto/buscar/{nombre}", name: "producto_buscar", methods: ["GET"])]
+    public function buscarProductoPorNombre(Request $request, EntityManagerInterface $entityManager, $nombre): JsonResponse
+    {
+        $repository = $entityManager->getRepository(Producto::class);
+        $producto = $repository->findOneBy(['nombre' => $nombre]);
+    
+        if (!$producto) {
+            $response = [
+                'message' => 'No se encontró un producto con el nombre: ' . $nombre,
+                'status' => 404
+            ];
+            return new JsonResponse($response, 404);
+        }
+    
+        $data = [
+            'id' => $producto->getId(),
+            'precio' => $producto->getPrecio(),
+            'nombre' => $producto->getNombre(),
+            'descripcion' => $producto->getDescripcion(),
+            'tamano' => $producto->getTamano(),
+            'modelo' => $producto->getModelo(),
+            'color' => $producto->getColor(),
+            'peso' => $producto->getPeso(),
+            'imageName' => $producto->getImageName(),
+            'categoria' => $producto->getCategoria()
+        ];
+    
+        return new JsonResponse($data);
+    }
+
+    #[Route("/producto/categoria/{categoria}", name: "producto_por_categoria", methods: ["GET"])]
+public function getProductosPorCategoria(Request $request, EntityManagerInterface $entityManager, $categoria): JsonResponse
+{
+    $repository = $entityManager->getRepository(Producto::class);
+    $productos = $repository->findBy(['categoria' => $categoria]);
+
+    if (empty($productos)) {
+        $response = [
+            'message' => 'No se encontraron productos en la categoría: ' . $categoria,
+            'status' => 404
+        ];
+        return new JsonResponse($response, 404);
+    }
+
+    $data = [];
+    foreach ($productos as $producto) {
+        $data[] = [
+            'id' => $producto->getId(),
+            'precio' => $producto->getPrecio(),
+            'nombre' => $producto->getNombre(),
+            'descripcion' => $producto->getDescripcion(),
+            'tamano' => $producto->getTamano(),
+            'modelo' => $producto->getModelo(),
+            'color' => $producto->getColor(),
+            'peso' => $producto->getPeso(),
+            'imageName' => $producto->getImageName(),
+            'categoria' => $producto->getCategoria()
+        ];
+    }
+
+    return new JsonResponse($data);
+}
   
      #[Route("/producto/edit/{id}", name:"pdefbe", methods:"PUT")]
      public function edit(ManagerRegistry $doctrine, Request $request, int $id): Response

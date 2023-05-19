@@ -217,6 +217,9 @@
 						</div>
 						<!-- /store top filter -->
 
+                        {% if mensajeError is defined %}
+                        <h2>{{ mensajeError }}</h2>
+                        {% else %}
 						<!-- store products -->
 						<div class="row">
 							<!-- product -->
@@ -252,6 +255,7 @@
 								</div>
 							</div>
 							<!-- /product -->
+                            {% if productosRelacionados is not null %}
                            {% for productoRelacionado in productosRelacionados %} 
 							<div class="col-md-4 col-xs-6">
 								<div class="product">
@@ -285,6 +289,8 @@
 								</div>
 							</div>
                              {% endfor %}
+                             {% endif %}
+                        {% endif %}
 							<!-- /product -->
 
 

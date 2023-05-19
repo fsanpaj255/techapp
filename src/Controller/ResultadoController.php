@@ -24,6 +24,15 @@ class ResultadoController extends AbstractController
         // Realizar la búsqueda del producto por nombre
         $producto = $this->productoRepository->findOneByNombre($nombreProducto);
 
+        if (!$producto) {
+            // No se encontró ningún producto, mostrar mensaje de error
+            $mensajeError = 'No se han encontrado productos.';
+            return $this->render('resultado/index.html.twig', [
+                'mensajeError' => $mensajeError,
+            ]);
+        }
+
+
         // Obtener la categoría del producto buscado
         $categoria = $producto->getCategoria();
          // Obtener todos los productos que comparten la misma categoría si la categoría no es nula

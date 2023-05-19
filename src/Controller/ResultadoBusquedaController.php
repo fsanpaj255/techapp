@@ -3,22 +3,20 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ResultadoBusquedaController extends AbstractController
+class ResultadoController extends AbstractController
 {
-    #[Route("/resultado/busqueda", name: "resultado_busqueda")]
-    public function mostrarResultadoBusqueda(Request $request): Response
+    #[Route('/resultado/busqueda', name: 'resultado_busqueda')]
+    public function mostrarResultado(Request $request)
     {
-        // Obtener los datos enviados desde jQuery
-        $datos = $request->get('datos');
+        // Obtener los datos del producto encontrado enviados desde el frontend
+        $productoBuscado = $request->request->get('datos')[0];
 
-        // Renderizar la plantilla Twig y pasar los datos como variables
-        return $this->render('resultado_busqueda/index.html.twig', [
-            'datos' => $datos,
+        // Renderizar la plantilla Twig y pasar los datos del producto a la plantilla
+        return $this->render('resultadob/busqueda.html.twig', [
+            'producto' => $productoBuscado,
         ]);
     }
 }

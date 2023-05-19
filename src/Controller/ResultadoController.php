@@ -30,7 +30,7 @@ class ResultadoController extends AbstractController
         $productosRelacionados = null;
         if ($categoria !== null) {
         // Obtener todos los productos que comparten la misma categoría
-        $productosRelacionados = $this->productoRepository->findByCategoria($categoria);
+        $productosRelacionados = $this->productoRepository->findByCategoriaExceptProducto($categoria, $producto);
     }
         return $this->render('resultado/index.html.twig', [
             'producto' => $producto,

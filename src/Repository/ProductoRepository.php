@@ -39,6 +39,18 @@ class ProductoRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByCategoriaExceptProducto($categoria, $producto)
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.categoria = :categoria')
+            ->andWhere('p != :producto')
+            ->setParameter('categoria', $categoria)
+            ->setParameter('producto', $producto)
+            ->getQuery()
+            ->getResult();
+    }
+
+
 //    /**
 //     * @return Producto[] Returns an array of Producto objects
 //     */

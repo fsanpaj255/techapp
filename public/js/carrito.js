@@ -10,6 +10,11 @@ function addToCart(productId) {
       var productoprecio = producto.precio;
       var productoimagen = producto.imageName;
 
+      // Incrementar el valor en 1 de la etiqueta de cantidad en el carrito cada vez que hace la llamada ajax GET
+      var carritoQtyElement = $('.qty.carrito');
+      var currentQuantity = parseInt(carritoQtyElement.text());
+      carritoQtyElement.text(currentQuantity + 1);
+
       // Verificar si el producto ya está en el carrito
       var productWidget = $('.cart-list').find('[data-product-id="' + productId + '"]');
       if (productWidget.length > 0) {
@@ -23,7 +28,7 @@ function addToCart(productId) {
         var productImg = $('<div class="product-img"><img src="./img/' + productoimagen + '" alt=""></div>');
         var productBody = $('<div class="product-body"></div>');
         var productNameElement = $('<h3 class="product-name"><a href="#">' + productonombre + '</a></h3>');
-        var productPriceElement = $('<h4 class="product-price"><span class="qty">1x</span>€' + productoprecio.toFixed(2) + '</h4>');
+        var productPriceElement = $('<h4 class="product-price"><span class="qty">1x</span>' + productoprecio.toFixed(2) + ' € </h4>');
         var deleteButton = $('<button class="delete"><i class="fa fa-close"></i></button>');
 
         // Agregar los elementos al producto
@@ -49,21 +54,32 @@ function addToCart(productId) {
 }
 
 $(document).on('click', '.delete', function() {
-    function eliminarProducto(productId) {
-        // Buscar el producto en el carrito por su ID
-        var productWidget = $('.cart-list').find('[data-product-id="' + productId + '"]');
-        if (productWidget.length > 0) {
-          // Obtener el precio del producto que se va a eliminar
-          var productoprecio = parseFloat(productWidget.find('.product-price').text().replace('€', ''));
-      
-          // Restar el precio del producto eliminado al precio total
-          precioTotal -= productoprecio;
-      
-          // Actualizar el precio total en el elemento HTML correspondiente
-          $('.cart-summary h5').text('SUBTOTAL: ' + precioTotal.toFixed(2) + ' €');
-      
-          // Eliminar el producto del carrito
-          productWidget.remove();
-        }
+  // Buscar el producto en el carrito por su ID
+  var productId = $(this).closest('.product-widget').data('product-id');
+  var productWidget = $('.cart-list').find('[data-product-id="' + productId + '"]');
+  if (productWidget.length > 0) {
+    // Obtener el precio del producto que se va a eliminar
+    var productoprecio = parseFloat(productWidget.find('.product-price').text().replace('€', ''));
+
+    // Restar el precio del producto eliminado al precio total
+    precioTotal -= productoprecio;
+
+    // Actualizar el precio total en el elemento HTML correspondiente
+    $('.cart-summary h5').text('SUBTOTAL: ' + precioTotal.toFixed(2) + ' €');
+
+    // Eliminar el producto del carrito
+    productWidget.remove();
   }
+});
+
+// Verificar si no hay productos en el carrito y mostrar el mensaje correspondiente
+function verificarCarritoVacio() {
+  if ($('.cart-list').children().length === 0) {
+    $('.cart-summary h5').text('No se han añadido productos al carrito aún.');
+  }
+}
+
+// Llamar a la función para verificar el carrito vacío al cargar la página
+$(document).ready(function() {
+  verificarCarritoVacio();
 });

@@ -77,17 +77,17 @@ class ApiProductos extends AbstractController
             return $this->json('No se ha encontrado un producto con la id=' . $id, 404);
         }
   
-        $data =  [
-         'id' => $producto->getId(),
-               'precio' => $producto->getPrecio(),
-               'nombre' => $producto->getNombre(),
-               'descripcion' => $producto->getDescripcion(),
-               'ancho' => $producto->getAncho(),
-               'largo' => $producto->getLargo(),
-               'modelo' => $producto->getModelo(),
-               'color' => $producto->getColor(),
-               'peso' => $producto->getPeso(),
-               'imageName' => $producto->getImageName()
+        $data = [
+            'id' => $producto->getId(),
+            'precio' => $producto->getPrecio(),
+            'nombre' => $producto->getNombre(),
+            'descripcion' => $producto->getDescripcion(),
+            'tamano' => $producto->getTamano(),
+            'modelo' => $producto->getModelo(),
+            'color' => $producto->getColor(),
+            'peso' => $producto->getPeso(),
+            'imageName' => $producto->getImageName(),
+            'categoria' => $producto->getCategoria()
         ];
           
         return $this->json($data);

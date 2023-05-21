@@ -23,7 +23,7 @@ function addToCart(productId) {
         var productImg = $('<div class="product-img"><img src="./img/' + productoimagen + '" alt=""></div>');
         var productBody = $('<div class="product-body"></div>');
         var productNameElement = $('<h3 class="product-name"><a href="#">' + productonombre + '</a></h3>');
-        var productPriceElement = $('<h4 class="product-price"><span class="qty">1x</span>$' + productoprecio.toFixed(2) + '</h4>');
+        var productPriceElement = $('<h4 class="product-price"><span class="qty">1x</span>€' + productoprecio.toFixed(2) + '</h4>');
         var deleteButton = $('<button class="delete"><i class="fa fa-close"></i></button>');
 
         // Agregar los elementos al producto
@@ -40,7 +40,7 @@ function addToCart(productId) {
       // Sumar el precio del producto al precio total
       precioTotal += productoprecio;
       // Actualizar el precio total en el elemento HTML correspondiente
-      $('.cart-summary h5').text('SUBTOTAL: $' + precioTotal.toFixed(2));
+      $('.cart-summary h5').text('SUBTOTAL: ' + precioTotal.toFixed(2) + ' €');
     },
     error: function(error) {
       // Manejar el error de la llamada AJAX aquí

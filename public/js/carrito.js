@@ -47,3 +47,23 @@ function addToCart(productId) {
     }
   });
 }
+
+$(document).on('click', '.delete', function() {
+    function eliminarProducto(productId) {
+        // Buscar el producto en el carrito por su ID
+        var productWidget = $('.cart-list').find('[data-product-id="' + productId + '"]');
+        if (productWidget.length > 0) {
+          // Obtener el precio del producto que se va a eliminar
+          var productoprecio = parseFloat(productWidget.find('.product-price').text().replace('€', ''));
+      
+          // Restar el precio del producto eliminado al precio total
+          precioTotal -= productoprecio;
+      
+          // Actualizar el precio total en el elemento HTML correspondiente
+          $('.cart-summary h5').text('SUBTOTAL: ' + precioTotal.toFixed(2) + ' €');
+      
+          // Eliminar el producto del carrito
+          productWidget.remove();
+        }
+  }
+});

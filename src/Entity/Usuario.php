@@ -49,6 +49,18 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $direccion = null;
 
+    #[ORM\Column(length: 5, nullable: true)]
+    private ?string $fechaExpiracion;
+
+    #[ORM\Column(type: 'string', length: 3)]
+    private ?string $cvv;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $ciudad;
+
+    #[ORM\Column(type: 'string', length: 10)]
+    private ?string $codigoPostal;
+
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
@@ -205,4 +217,53 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function getFechaExpiracion(): ?string
+{
+    return $this->fechaExpiracion;
+}
+
+public function setFechaExpiracion(?string $fechaExpiracion): self
+{
+    $this->fechaExpiracion = $fechaExpiracion;
+
+    return $this;
+}
+
+public function getCvv(): ?string
+{
+    return $this->cvv;
+}
+
+public function setCvv(?string $cvv): self
+{
+    $this->cvv = $cvv;
+
+    return $this;
+}
+
+public function getCiudad(): ?string
+{
+    return $this->ciudad;
+}
+
+public function setCiudad(?string $ciudad): self
+{
+    $this->ciudad = $ciudad;
+
+    return $this;
+}
+
+public function getCodigoPostal(): ?string
+{
+    return $this->codigoPostal;
+}
+
+public function setCodigoPostal(?string $codigoPostal): self
+{
+    $this->codigoPostal = $codigoPostal;
+
+    return $this;
+}
+
 }

@@ -16,13 +16,13 @@ class ResultadoController extends AbstractController
     {
         $this->productoRepository = $productoRepository;
     }
-    #[Route('/buscar_producto', name: 'buscar_producto')]
-    public function buscarProducto(Request $request)
+    #[Route('/buscar_producto', name: 'buscar_producto')] 
+    public function buscarProducto(Request $request, ProductoRepository $productoRepository)
     {
         $nombreProducto = $request->query->get('nombreProducto');
 
         // Realizar la búsqueda del producto por nombre
-        $producto = $this->productoRepository->findOneByNombre($nombreProducto);
+        $producto = $productoRepository->findOneByNombreLike($nombreProducto);
 
         if (!$producto) {
             // No se encontró ningún producto, mostrar mensaje de error
@@ -32,15 +32,16 @@ class ResultadoController extends AbstractController
             ]);
         }
 
-
         // Obtener la categoría del producto buscado
         $categoria = $producto->getCategoria();
-         // Obtener todos los productos que comparten la misma categoría si la categoría no es nula
+
+        // Obtener todos los productos que comparten la misma categoría si la categoría no es nula
         $productosRelacionados = null;
         if ($categoria !== null) {
-        // Obtener todos los productos que comparten la misma categoría
-        $productosRelacionados = $this->productoRepository->findByCategoriaExceptProducto($categoria, $producto);
-    }
+            // Obtener todos los productos que comparten la misma categoría
+            $productosRelacionados = $productoRepository->findRelatedProductsByCategoria($producto);
+        }
+
         return $this->render('resultado/index.html.twig', [
             'producto' => $producto,
             'productosRelacionados' => $productosRelacionados,

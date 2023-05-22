@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Producto;
+use App\Entity\Categoria;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -39,17 +40,46 @@ class ProductoRepository extends ServiceEntityRepository
         }
     }
 
-    public function findByCategoriaExceptProducto($categoria, $producto)
+   /**
+     * Busca un producto por nombre de forma parcial.
+     *
+     * @param string $nombre El nombre parcial del producto a buscar.
+     * @return Producto|null El producto encontrado o null si no se encontró ninguno.
+     */
+    public function findOneByNombreLike(string $nombre): ?Producto
     {
-        return $this->createQueryBuilder('p')
-            ->where('p.categoria = :categoria')
-            ->andWhere('p != :producto')
-            ->setParameter('categoria', $categoria)
-            ->setParameter('producto', $producto)
-            ->getQuery()
-            ->getResult();
+        $qb = $this->createQueryBuilder('p');
+
+        $qb->andWhere($qb->expr()->like('p.nombre', ':nombre'))
+            ->setParameter('nombre', '%' . $nombre . '%')
+            ->setMaxResults(1);
+
+        $query = $qb->getQuery();
+
+        return $query->getOneOrNullResult();
     }
 
+    /**
+     * Busca productos relacionados por categoría, excluyendo un producto específico.
+     *
+     * @param Producto $producto El producto principal.
+     * @return Producto[] Los productos relacionados encontrados.
+     */
+    public function findRelatedProductsByCategoria(Producto $producto): array
+    {
+        $categoria = $producto->getCategoria();
+
+        $qb = $this->createQueryBuilder('p');
+
+        $qb->andWhere($qb->expr()->eq('p.categoria', ':categoria'))
+            ->andWhere($qb->expr()->neq('p.id', ':productoId'))
+            ->setParameter('categoria', $categoria)
+            ->setParameter('productoId', $producto->getId());
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
 
 //    /**
 //     * @return Producto[] Returns an array of Producto objects

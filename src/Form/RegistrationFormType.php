@@ -52,26 +52,6 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('direccion', TextType::class, [
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Por favor, introduce una dirección',
-                    ]),
-                ],
-                'label' => 'Dirección',
-            ])
-            ->add('tarjeta', TextType::class, [
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Por favor, introduce un número de tarjeta',
-                    ]),
-                    new Regex([
-                        'pattern' => '/^\d{16}$/',
-                        'message' => 'El número de tarjeta es inválido',
-                    ]),
-                ],
-                'label' => 'Tarjeta de crédito',
-            ])
             ->add('correo', TextType::class, [
                 'constraints' => [
                     new NotBlank([
@@ -93,36 +73,6 @@ class RegistrationFormType extends AbstractType
             //         ]),
             //     ],
             // ])
-            ->add('cvv', TextType::class, [
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Por favor, introduce el CVV',
-                    ]),
-                    new Regex([
-                        'pattern' => '/^\d{3}$/',
-                        'message' => 'El CVV es inválido',
-                    ]),
-                ],
-            ])
-            ->add('ciudad', TextType::class, [
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Por favor, selecciona una ciudad',
-                    ]),
-                ],
-            ])
-            ->add('codigoPostal', TextType::class, [
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Por favor, introduce el código postal',
-                    ]),
-                    new Regex([
-                        'pattern' => '/^(?:0[1-9]|[1-4]\d|5[0-2])\d{3}$/',
-                        'message' => 'El código postal es inválido',
-                    ]),
-                ],
-                'label' => 'Código postal',
-            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [

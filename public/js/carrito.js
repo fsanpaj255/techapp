@@ -175,6 +175,18 @@ function vaciarCarrito() {
   // Eliminar el carrito del almacenamiento local
   localStorage.removeItem('carrito');
 }
+$('.pagar').on('click', function() {
+  enviarProductosAlControlador();
+});
+
+function enviarProductosAlControlador() {
+  // Crear un formulario oculto
+   // Crear la URL del controlador y agregar el array de productos como parámetro
+  var url = '/pago?productos=' + encodeURIComponent(JSON.stringify(carritoProductos));
+
+  // Redireccionar al controlador
+  window.location.href = url;
+}
 
 // Llamar a la función para verificar el carrito vacío y cargar desde el almacenamiento local al cargar la página
 $(document).ready(function() {

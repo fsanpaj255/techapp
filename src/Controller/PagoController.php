@@ -16,27 +16,30 @@ class PagoController extends AbstractController
         $productosJSON = $request->query->get('productos');
         $productos = json_decode($productosJSON, true);
 
-        $precioJSON = $request->query->get('precio');
-        $precio = json_decode($precioJSON, true);
-
-        //cantidad de productos
-                $productosContados = [];
+        // Contador de productos
+        $productosContados = [];
+        $precioTotal = 0;
         foreach ($productos as $producto) {
             $nombre = $producto['nombre'];
             if (isset($productosContados[$nombre])) {
-                $productosContados[$nombre]++;
+                $productosContados[$nombre]['cantidad']++;
+                $productosContados[$nombre]['precioTotal'] += $producto['precio'];
             } else {
-                $productosContados[$nombre] = 1;
+                $productosContados[$nombre] = [
+                    'cantidad' => 1,
+                    'precio' => $producto['precio'],
+                    'precioTotal' => $producto['precio']
+                ];
             }
-}
+            $precioTotal += $producto['precio'];
+        }
+
         // Verificar si se obtuvieron los productos correctamente
         if (is_array($productos)) {
-            // Aquí puedes realizar cualquier lógica adicional con los productos, como guardarlos en la base de datos, realizar operaciones, etc.
-
             // Renderiza la plantilla y pasa los productos como variable
             return $this->render('pago/index.html.twig', [
                 'productos' => $productosContados,
-                'precio' => $precio
+                'total' => $precioTotal
             ]);
         } else {
             // Manejar el caso cuando no se obtuvieron los productos correctamente

@@ -115,14 +115,14 @@
 								<div><strong>PRODUCTO/S</strong></div>
 								<div><strong>TOTAL</strong></div>
 							</div>
-							{% for nombre, cantidad in productos %}
+							{% for producto, datos in productos %}
 							<div class="order-products">
 								<div class="order-col">
 									 
 
-	 								 <div>{{ nombre }}{% if cantidad > 1 %} x{{ cantidad }}{% endif %}</div>
+	 								 <div>{{ producto }} x{{ datos.cantidad }}</div>
 
-									<div>{{precio}} €
+									<div>{{datos.precio * datos.cantidad}} €
 									
 									</div>
 								</div>
@@ -131,7 +131,7 @@
 							
 							<div class="order-col">
 								<div><strong>TOTAL</strong></div>
-								<div><strong class="order-total">{{precio}}  €</strong></div>
+								<div><strong class="order-total">{{total}}  €</strong></div>
 							</div>
 						</div>
 						<div class="payment-method">

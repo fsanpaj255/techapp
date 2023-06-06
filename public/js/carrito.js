@@ -182,7 +182,7 @@ $('.pagar').on('click', function() {
 function enviarProductosAlControlador() {
   // Crear un formulario oculto
    // Crear la URL del controlador y agregar el array de productos como parámetro
-  var url = '/pago?productos=' + encodeURIComponent(JSON.stringify(carritoProductos));
+  var url = '/pago?productos=' + encodeURIComponent(JSON.stringify(carritoProductos)) + '&precio=' + encodeURIComponent(JSON.stringify(precioTotal));
 
   // Redireccionar al controlador
   window.location.href = url;

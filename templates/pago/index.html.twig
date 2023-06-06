@@ -115,29 +115,23 @@
 								<div><strong>PRODUCTO/S</strong></div>
 								<div><strong>TOTAL</strong></div>
 							</div>
+							{% for nombre, cantidad in productos %}
 							<div class="order-products">
 								<div class="order-col">
-									 {% for producto in productos %}
+									 
 
-	 								 <p>{{ producto.nombre }}</p>
+	 								 <div>{{ nombre }}{% if cantidad > 1 %} x{{ cantidad }}{% endif %}</div>
 
-									<div>{{producto.precio}} €
+									<div>{{precio}} €
 									
 									</div>
-									{% endfor %}
-								</div>
-								<div class="order-col">
-									<div>2x Product Name Goes Here</div>
-									<div>$980.00</div>
 								</div>
 							</div>
-							<div class="order-col">
-								<div>Shiping</div>
-								<div><strong>FREE</strong></div>
-							</div>
+							{% endfor %}
+							
 							<div class="order-col">
 								<div><strong>TOTAL</strong></div>
-								<div><strong class="order-total">$2940.00</strong></div>
+								<div><strong class="order-total">{{precio}}  €</strong></div>
 							</div>
 						</div>
 						<div class="payment-method">

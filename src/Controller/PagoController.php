@@ -12,38 +12,41 @@ class PagoController extends AbstractController
     #[Route('/pago', name: 'app_pago')]
     public function index(Request $request): Response
     {
-        // Obtener el array de productos desde el parámetro de la URL
-        $productosJSON = $request->query->get('productos');
-        $productos = json_decode($productosJSON, true);
+        // Obtener los datos del cuerpo de la solicitud
+        $contenido = $request->getContent();
 
-        // Contador de productos
-        $productosContados = [];
-        $precioTotal = 0;
-        foreach ($productos as $producto) {
-            $nombre = $producto['nombre'];
-            if (isset($productosContados[$nombre])) {
-                $productosContados[$nombre]['cantidad']++;
-                $productosContados[$nombre]['precioTotal'] += $producto['precio'];
-            } else {
-                $productosContados[$nombre] = [
-                    'cantidad' => 1,
-                    'precio' => $producto['precio'],
-                    'precioTotal' => $producto['precio']
-                ];
+        // Decodificar los datos JSON
+        $datos = json_decode($contenido, true);
+
+        // Verificar si la decodificación es exitosa y los datos no son nulos
+        if (is_array($datos) && !empty($datos)) {
+            $productos = $datos['productos'];
+            $precioTotal = $datos['precio'];
+
+            // Contador de productos
+            $productosContados = [];
+            foreach ($productos as $producto) {
+                $nombre = $producto['nombre'];
+                if (isset($productosContados[$nombre])) {
+                    $productosContados[$nombre]['cantidad']++;
+                    $productosContados[$nombre]['precioTotal'] += $producto['precio'];
+                } else {
+                    $productosContados[$nombre] = [
+                        'cantidad' => 1,
+                        'precio' => $producto['precio'],
+                        'precioTotal' => $producto['precio']
+                    ];
+                }
             }
-            $precioTotal += $producto['precio'];
-        }
 
-        // Verificar si se obtuvieron los productos correctamente
-        if (is_array($productos)) {
-            // Renderiza la plantilla y pasa los productos como variable
+            // Renderizar la plantilla y pasar los datos necesarios
             return $this->render('pago/index.html.twig', [
                 'productos' => $productosContados,
                 'total' => $precioTotal
             ]);
         } else {
-            // Manejar el caso cuando no se obtuvieron los productos correctamente
-            return new Response('Error al obtener los productos', Response::HTTP_BAD_REQUEST);
+            // Manejar el caso cuando no se obtuvieron los datos correctamente
+            return new Response('Error al obtener los datos', Response::HTTP_BAD_REQUEST);
         }
     }
 }

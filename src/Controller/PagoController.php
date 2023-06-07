@@ -40,7 +40,7 @@ class PagoController extends AbstractController
             }
 
             // Renderizar la plantilla y pasar los datos necesarios
-            return $this->render('pago/index.html.twig', [
+            return $this->redirectToRoute('app_pago', [
                 'productos' => $productosContados,
                 'total' => $precioTotal
             ]);

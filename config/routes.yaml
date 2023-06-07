@@ -6,3 +6,7 @@ controllers:
 app_logout:
     path: /logout
     methods: GET
+pago_route:
+  path: /pago
+  methods: [POST]
+  controller: App\Controller\PagoController::procesarPago

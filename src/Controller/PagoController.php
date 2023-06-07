@@ -48,4 +48,5 @@ class PagoController extends AbstractController
             return new Response('Error al obtener los datos', Response::HTTP_BAD_REQUEST);
         }
     }
+    
 }

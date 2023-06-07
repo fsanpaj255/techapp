@@ -190,6 +190,7 @@ function enviarProductosAlControlador() {
     }),
     success: function(response) {
       console.log(response);
+      // window.location.href = '/pago';
     },
     error: function(xhr, status, error) {
       console.log(error);

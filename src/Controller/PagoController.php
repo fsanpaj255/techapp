@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -40,7 +39,7 @@ class PagoController extends AbstractController
             }
 
             // Renderizar la plantilla y pasar los datos necesarios
-            return $this->redirectToRoute('app_pago', [
+            return $this->render('pago/index.html.twig', [
                 'productos' => $productosContados,
                 'total' => $precioTotal
             ]);

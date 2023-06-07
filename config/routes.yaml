@@ -6,7 +6,6 @@ controllers:
 app_logout:
     path: /logout
     methods: GET
-pago_route:
-  path: /pago
-  methods: [POST]
-  controller: App\Controller\PagoController::procesarPago
+app_pago:
+    path: /pago
+    controller: App\Controller\PagoController::index

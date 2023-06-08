@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UsuarioRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -63,6 +65,14 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
+
+    #[ORM\OneToMany(mappedBy: 'usuarioid', targetEntity: Tarjeta::class)]
+    private Collection $tarjetaid;
+
+    public function __construct()
+    {
+        $this->tarjetaid = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -262,6 +272,36 @@ public function getCodigoPostal(): ?string
 public function setCodigoPostal(?string $codigoPostal): self
 {
     $this->codigoPostal = $codigoPostal;
+
+    return $this;
+}
+
+/**
+ * @return Collection<int, Tarjeta>
+ */
+public function getTarjetaid(): Collection
+{
+    return $this->tarjetaid;
+}
+
+public function addTarjetaid(Tarjeta $tarjetaid): self
+{
+    if (!$this->tarjetaid->contains($tarjetaid)) {
+        $this->tarjetaid->add($tarjetaid);
+        $tarjetaid->setUsuarioid($this);
+    }
+
+    return $this;
+}
+
+public function removeTarjetaid(Tarjeta $tarjetaid): self
+{
+    if ($this->tarjetaid->removeElement($tarjetaid)) {
+        // set the owning side to null (unless already changed)
+        if ($tarjetaid->getUsuarioid() === $this) {
+            $tarjetaid->setUsuarioid(null);
+        }
+    }
 
     return $this;
 }

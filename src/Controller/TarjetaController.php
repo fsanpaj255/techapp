@@ -36,7 +36,6 @@ class TarjetaController extends AbstractController
 
         // Crear el formulario y asociarlo a la entidad Tarjeta
         $form = $this->createForm(TarjetaType::class, $tarjeta);
-
         // Manejar la solicitud del formulario
         $form->handleRequest($request);
 
@@ -48,6 +47,7 @@ class TarjetaController extends AbstractController
             $this->entityManager->persist($tarjeta);
             $this->entityManager->flush();
 
+            return $this->redirectToRoute('app_pago');
         }
 
         // Renderizar la plantilla del formulario

@@ -98,14 +98,15 @@
   height: 374px;
 }
 .boton-pagar{
-display: inline-block;
-width: calc(50% - 0px);
-padding: 12px;
-background-color: #ff5900;
-color: #FFF;
-text-align: center;
-font-weight: 700;
--webkit-transition: 0.2s all;
-transition: 0.2s all;
+  display: inline-block;
+  width: calc(50% - 0px);
+  padding: 12px;
+  background-color: #ff5900;
+  color: #FFF;
+  text-align: center;
+  font-weight: 700;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+  border: none;
 }
 

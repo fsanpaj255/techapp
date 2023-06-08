@@ -17,35 +17,33 @@
 								<h3 class="title">Datos de pago</h3>
 							</div>
 							    <!-- Formulario para añadir tarjeta
-									<form action=" {{ path('guardar_tarjeta') }} " method="POST">
-										{{ form_start(form) }}
-										
-										<!-- Campo para el número de la tarjeta -->
-										<div class="form-group">
-											{{ form_label(form.numeroTarjeta) }}
-											{{ form_widget(form.numeroTarjeta) }}
-											{{ form_errors(form.numeroTarjeta) }}
-										</div>
-										
-										<!-- Campo para la fecha de expiración -->
-										<div class="form-group">
-											{{ form_label(form.fechaExpiracion) }}
-											{{ form_widget(form.fechaExpiracion) }}
-											{{ form_errors(form.fechaExpiracion) }}
-										</div>
-										
-										<!-- Campo para el CVV -->
-										<div class="form-group">
-											{{ form_label(form.cvv) }}
-											{{ form_widget(form.cvv) }}
-											{{ form_errors(form.cvv) }}
-										</div>
-										
-										<!-- Botón para enviar el formulario -->
-										<button type="submit" class="primary-btn">Añadir Tarjeta</button>
-										
-										{{ form_end(form) }}
-									</form> -->
+									{{ form_start(form) }}
+									
+									<!-- Campo para el número de la tarjeta -->
+									<div class="form-group">
+										{{ form_label(form.numerotarjeta) }}
+										{{ form_widget(form.numerotarjeta) }}
+										{{ form_errors(form.numerotarjeta) }}
+									</div>
+									
+									<!-- Campo para la fecha de expiración -->
+									<div class="form-group">
+										{{ form_label(form.fechaexpiracion) }}
+										{{ form_widget(form.fechaexpiracion) }}
+										{{ form_errors(form.fechaexpiracion) }}
+									</div>
+									
+									<!-- Campo para el CVV -->
+									<div class="form-group">
+										{{ form_label(form.cvv) }}
+										{{ form_widget(form.cvv) }}
+										{{ form_errors(form.cvv) }}
+									</div>
+									
+									<!-- Botón para enviar el formulario -->
+									<button type="submit" class="primary-btn">Añadir Tarjeta</button>
+									
+									{{ form_end(form) }}
 									<!-- /Formulario para añadir tarjeta -->
 								</div>
 							<div class="form-group">

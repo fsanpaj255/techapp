@@ -2,15 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Tarjeta;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Form\TarjetaType;
 
 class PagoController extends AbstractController
 {
     #[Route('/pago', name: 'app_pago', methods: ['POST'])]
-    public function index(Request $request): Response
+    public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         // Obtener los datos del cuerpo de la solicitud
         $productosJson = $request->request->get('productos');
@@ -38,10 +41,37 @@ class PagoController extends AbstractController
                 }
             }
 
+             // Verificar si el usuario está logueado
+                $usuario = $this->getUser();
+                if (!$usuario) {
+                    // El usuario no está logueado, redirigir a la página de login o mostrar un mensaje de error
+                    return $this->redirectToRoute('app_login');
+                }
+
+
+                // Crear una nueva instancia de la entidad Tarjeta
+                $tarjeta = new Tarjeta();
+
+                // Crear el formulario y asociarlo a la entidad Tarjeta
+                $form = $this->createForm(TarjetaType::class, $tarjeta);
+                // Manejar la solicitud del formulario
+                $form->handleRequest($request);
+
+                if ($form->isSubmitted() && $form->isValid()) {
+                    // Asignar el usuario logueado a la tarjeta
+                    $tarjeta->setUsuarioid($usuario);
+
+                    // Guardar la tarjeta en la base de datos
+                    $entityManager->persist($tarjeta);
+                    $entityManager->flush();
+                    return $this->redirectToRoute('app_pago');
+                }
+            
             // Renderizar la plantilla y pasar los datos necesarios
             return $this->render('pago/index.html.twig', [
                 'productos' => $productosContados,
-                'total' => $precioTotal
+                'total' => $precioTotal,
+                'form' => $form->createView(),
             ]);
         } else {
             // Manejar el caso cuando no se obtuvieron los datos correctamente

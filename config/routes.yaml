@@ -9,3 +9,4 @@ app_logout:
 app_pago:
     path: /pago
     controller: App\Controller\PagoController::index
+    

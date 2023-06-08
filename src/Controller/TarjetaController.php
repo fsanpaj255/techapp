@@ -12,24 +12,17 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TarjetaController extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
-
-    public function __construct(EntityManagerInterface $entityManager)
-    {
-        $this->entityManager = $entityManager;
-    }
 
     
-   
      #[Route('/guardar-tarjeta', name: 'guardar_tarjeta')]
-    public function guardarTarjeta(Request $request): Response
+    public function guardarTarjeta(Request $request,EntityManagerInterface $entityManager): Response
     {
         // Verificar si el usuario está logueado
         $usuario = $this->getUser();
-        // if (!$usuario) {
-        //     // El usuario no está logueado, redirigir a la página de login o mostrar un mensaje de error
-        //     return $this->redirectToRoute('app_login');
-        // }
+        if (!$usuario) {
+            // El usuario no está logueado, redirigir a la página de login o mostrar un mensaje de error
+            return $this->redirectToRoute('app_login');
+        }
 
         // Crear una nueva instancia de la entidad Tarjeta
         $tarjeta = new Tarjeta();
@@ -44,8 +37,8 @@ class TarjetaController extends AbstractController
             $tarjeta->setUsuarioid($usuario);
 
             // Guardar la tarjeta en la base de datos
-            $this->entityManager->persist($tarjeta);
-            $this->entityManager->flush();
+           $entityManager->persist($tarjeta);
+            $entityManager->flush();
 
             return $this->redirectToRoute('app_pago');
         }

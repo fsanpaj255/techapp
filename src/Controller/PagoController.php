@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -8,20 +9,19 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PagoController extends AbstractController
 {
-    #[Route('/pago', name: 'app_pago')]
+    #[Route('/pago', name: 'app_pago', methods: ['POST'])]
     public function index(Request $request): Response
     {
         // Obtener los datos del cuerpo de la solicitud
-        $contenido = $request->getContent();
+        $productosJson = $request->request->get('productos');
+        $precioTotalJson = $request->request->get('precio');
 
         // Decodificar los datos JSON
-        $datos = json_decode($contenido, true);
+        $productos = json_decode($productosJson, true);
+        $precioTotal = json_decode($precioTotalJson, true);
 
         // Verificar si la decodificación es exitosa y los datos no son nulos
-        if (is_array($datos) && !empty($datos)) {
-            $productos = $datos['productos'];
-            $precioTotal = $datos['precio'];
-
+        if (is_array($productos) && !empty($productos) && is_numeric($precioTotal)) {
             // Contador de productos
             $productosContados = [];
             foreach ($productos as $producto) {
@@ -48,5 +48,4 @@ class PagoController extends AbstractController
             return new Response('Error al obtener los datos', Response::HTTP_BAD_REQUEST);
         }
     }
-    
 }

@@ -180,26 +180,17 @@ $('.pagar').on('click', function() {
 });
 
 function enviarProductosAlControlador() {
-  $.ajax({
-    url: 'http://127.0.0.1:8000/pago',
-    method: 'POST',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      productos: carritoProductos,
-      precio: precioTotal
-    }),
-    success: function(response) {
-      console.log(response);
-      // window.location.href = '/pago';
-    },
-    error: function(xhr, status, error) {
-      console.log(error);
-      console.log(carritoProductos);
-      console.log(precioTotal);
-    }
-  });
-}
+   // Obtener los datos del carrito y el precio total
+   var productosJson = JSON.stringify(carritoProductos);
+   var precioTotalJson = JSON.stringify(precioTotal);
 
+   // Actualizar los valores en los campos ocultos del formulario
+   $('#productos-input').val(productosJson);
+   $('#precio-input').val(precioTotalJson);
+
+   // Enviar el formulario
+   $('#pago-form').submit();
+ }
 // Llamar a la función para verificar el carrito vacío y cargar desde el almacenamiento local al cargar la página
 $(document).ready(function() {
   verificarCarritoVacio();

@@ -114,7 +114,12 @@
 										</div>
 										<div class="cart-btns">
 											<a href="#">Ver Carrito</a>
-											  <a class="pagar" href="#">Pagar<i class="fa fa-arrow-circle-right"></i></a>
+										<form id="pago-form" action="http://127.0.0.1:8000/pago" method="POST">
+										<input type="hidden" id="productos-input" name="productos" value="">
+										<input type="hidden" id="precio-input" name="precio" value="">
+										<button type="submit" class="pagar boton-pagar">Pagar<i class="fa fa-arrow-circle-right"></i></button>
+										</form>
+
 										</div>
 									</div>
 								</div>

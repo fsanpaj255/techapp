@@ -70,6 +70,7 @@ function addToCart(productId) {
 
 // Función para eliminar del carrito
 $(document).on('click', '.delete', function() {
+  console.log("ELIMINANDO")
   // Buscar el producto en el carrito por su ID
   var productId = $(this).closest('.product-widget').data('product-id');
   var productWidget = $('.cart-list').find('[data-product-id="' + productId + '"]');
@@ -200,5 +201,6 @@ $(document).ready(function() {
   $('.cart-summary').append('<button class="vaciar-carrito">Vaciar Carrito</button>');
   $('.vaciar-carrito').on('click', function() {
     vaciarCarrito();
+    
   });
 });

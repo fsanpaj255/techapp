@@ -99,7 +99,10 @@
 }
 .boton-pagar{
   display: inline-block;
-  width: calc(50% - 0px);
+  border: 2px solid;
+  border-image: linear-gradient(180deg, #ff5900, rgb(12, 11, 11)) 1;
+  border-image-slice: 1;
+  width: 100%;
   padding: 12px;
   background-color: #ff5900;
   color: #FFF;
@@ -107,6 +110,28 @@
   font-weight: 700;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
-  border: none;
+  margin: 0;
+  
+}
+
+.boton-pagar:hover{
+  border: 2px solid;
+  border-image: linear-gradient(180deg, rgb(12, 11, 11), #ff5900) 1;
+  border-image-slice: 1;
+  font-size: 18px;
+  transition: 0.5s;
+}
+
+.vaciar-carrito{
+  border-color: red;
+  background-color: white;
+  color: red;
+  border-radius: 8px;
+}
+
+.vaciar-carrito:hover{
+  background-color: red;
+  color: white;
+  transition: 0.5s;
 }
 

@@ -36,23 +36,32 @@
 							<div class="section-title">
 								<h3 class="title">Añadir método de pago</h3>
 							</div>
+							<form method="POST" action="{{ path('app_pago') }}"></form>
 							{{ form_start(form) }}
 							<div class="form-group">
-								{{ form_label(form.numeroTarjeta) }}
-								{{ form_widget(form.numeroTarjeta) }}
-								{{ form_errors(form.numeroTarjeta) }}
+								{{ form_row(form.numeroTarjeta, {'attr': {'class':'input'}}) }}
 							</div>
 							<div class="form-group">
-								{{ form_label(form.fechaExpiracion) }}
-								{{ form_widget(form.fechaExpiracion) }}
-								{{ form_errors(form.fechaExpiracion) }}
+								{{ form_row(form.fechaExpiracion, {'attr': {'class':'input'}}) }}
 							</div>
 							<div class="form-group">
-								{{ form_label(form.cvv) }}
-								{{ form_widget(form.cvv) }}
-								{{ form_errors(form.cvv) }}
+								{{ form_row(form.cvv, {'attr': {'class':'input'}}) }}
 							</div>
-
+							<div class="form-group">
+								{{ form_row(form.calle, {'attr': {'class':'input'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_row(form.codigoPostal, {'attr': {'class':'input'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_row(form.ciudad, {'attr': {'class':'input'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_row(form.provincia, {'attr': {'class':'input'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_row(form.pais, {'attr': {'class':'input'}}) }}
+							</div>
 							{{ form_end(form) }}
 						</div>
 						<!-- /Billing Details -->
@@ -169,7 +178,7 @@
 								I've read and accept the <a href="#">terms & conditions</a>
 							</label>
 						</div>
-						<a href="#" class="primary-btn order-submit">Place order</a>
+						<a href="#" class="primary-btn order-submit">Realizar pedido</a>
 					</div>
 					<!-- /Order Details -->
 				</div>

@@ -42,26 +42,8 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $apellidos = null;
 
-    #[ORM\Column(length: 50, nullable: true)]
-    private ?string $tarjeta = null;
-
     #[ORM\Column(length: 9, nullable: true)]
     private ?string $dni = null;
-
-    #[ORM\Column(length: 50, nullable: true)]
-    private ?string $direccion = null;
-
-    #[ORM\Column(length: 5, nullable: true)]
-    private ?string $fechaExpiracion;
-
-    #[ORM\Column(type: 'string', length: 3)]
-    private ?string $cvv;
-
-    #[ORM\Column(type: 'string', length: 255)]
-    private ?string $ciudad;
-
-    #[ORM\Column(type: 'string', length: 10)]
-    private ?string $codigoPostal;
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
@@ -69,9 +51,13 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'usuarioid', targetEntity: Tarjeta::class)]
     private Collection $tarjetaid;
 
+    #[ORM\OneToMany(mappedBy: 'usuarioid', targetEntity: Direccion::class)]
+    private Collection $direccionid;
+
     public function __construct()
     {
         $this->tarjetaid = new ArrayCollection();
+        $this->direccionid = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -180,17 +166,6 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getTarjeta(): ?string
-    {
-        return $this->tarjeta;
-    }
-
-    public function setTarjeta(?string $tarjeta): self
-    {
-        $this->tarjeta = $tarjeta;
-
-        return $this;
-    }
 
     public function getDni(): ?string
     {
@@ -204,17 +179,7 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getDireccion(): ?string
-    {
-        return $this->direccion;
-    }
-
-    public function setDireccion(?string $direccion): self
-    {
-        $this->direccion = $direccion;
-
-        return $this;
-    }
+ 
 
     public function isVerified(): bool
     {
@@ -228,53 +193,6 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getFechaExpiracion(): ?string
-{
-    return $this->fechaExpiracion;
-}
-
-public function setFechaExpiracion(?string $fechaExpiracion): self
-{
-    $this->fechaExpiracion = $fechaExpiracion;
-
-    return $this;
-}
-
-public function getCvv(): ?string
-{
-    return $this->cvv;
-}
-
-public function setCvv(?string $cvv): self
-{
-    $this->cvv = $cvv;
-
-    return $this;
-}
-
-public function getCiudad(): ?string
-{
-    return $this->ciudad;
-}
-
-public function setCiudad(?string $ciudad): self
-{
-    $this->ciudad = $ciudad;
-
-    return $this;
-}
-
-public function getCodigoPostal(): ?string
-{
-    return $this->codigoPostal;
-}
-
-public function setCodigoPostal(?string $codigoPostal): self
-{
-    $this->codigoPostal = $codigoPostal;
-
-    return $this;
-}
 
 /**
  * @return Collection<int, Tarjeta>
@@ -300,6 +218,36 @@ public function removeTarjetaid(Tarjeta $tarjetaid): self
         // set the owning side to null (unless already changed)
         if ($tarjetaid->getUsuarioid() === $this) {
             $tarjetaid->setUsuarioid(null);
+        }
+    }
+
+    return $this;
+}
+
+/**
+ * @return Collection<int, Direccion>
+ */
+public function getDireccionid(): Collection
+{
+    return $this->direccionid;
+}
+
+public function addDireccionid(Direccion $direccionid): self
+{
+    if (!$this->direccionid->contains($direccionid)) {
+        $this->direccionid->add($direccionid);
+        $direccionid->setUsuarioid($this);
+    }
+
+    return $this;
+}
+
+public function removeDireccionid(Direccion $direccionid): self
+{
+    if ($this->direccionid->removeElement($direccionid)) {
+        // set the owning side to null (unless already changed)
+        if ($direccionid->getUsuarioid() === $this) {
+            $direccionid->setUsuarioid(null);
         }
     }
 

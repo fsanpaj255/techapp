@@ -36,6 +36,11 @@ class DireccionType extends AbstractType
                     new NotBlank([
                         'message' => 'Por favor, ingresa el código postal.',
                     ]),
+                    new Length([
+                        'min' => 5,
+                        'max' => 5,
+                        'exactMessage' => 'El código postal debe tener exactamente {{ limit }} dígitos.',
+                    ]),
                 ],
             ])
             ->add('ciudad', TextType::class, [

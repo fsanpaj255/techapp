@@ -3,25 +3,7 @@
 {% block title %}Hello PagoController!{% endblock %}
 
 {% block body %}
-	<!-- BREADCRUMB -->
-		<div id="breadcrumb" class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<div class="col-md-12">
-						<h3 class="breadcrumb-header">Checkout</h3>
-						<ul class="breadcrumb-tree">
-							<li><a href="#">Home</a></li>
-							<li class="active">Checkout</li>
-						</ul>
-					</div>
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /BREADCRUMB -->
+
 
 		<!-- SECTION -->
 		<div class="section">
@@ -36,7 +18,7 @@
 							<div class="section-title">
 								<h3 class="title">Añadir método de pago</h3>
 							</div>
-							<form method="POST" action="{{ path('app_pago') }}"></form>
+							
 							{{ form_start(form) }}
 							<div class="form-group">
 								{{ form_row(form.numeroTarjeta, {'attr': {'class':'input'}}) }}
@@ -65,7 +47,7 @@
 							<div class="form-group">
 								{{ form_row(form2.pais, {'attr': {'class':'input'}}) }}
 							</div>
-							{{ form_end(form) }}
+							
 						</div>
 						<!-- /Billing Details -->
 
@@ -109,7 +91,9 @@
 								Acepto los  <a href="#">términos y condiciones</a>
 							</label>
 						</div>
-						<a href="#" class="primary-btn order-submit">Realizar pedido</a>
+						<button type="submit" class="primary-btn order-submit">Realizar pedido</button>
+						{{ form_end(form) }}
+					
 					</div>
 					<!-- /Order Details -->
 				</div>

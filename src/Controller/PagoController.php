@@ -76,7 +76,7 @@ class PagoController extends AbstractController
                        // Guardar la direccion en la base de datos
                        $entityManager->persist($direccion);
                        $entityManager->flush();
-                    return $this->redirectToRoute('app_pago');
+                    return $this->redirectToRoute('app_landing');
                 }
             
             // Renderizar la plantilla y pasar los datos necesarios

@@ -43,41 +43,6 @@ class TarjetaType extends AbstractType
                 'constraints' => [
                     new NotBlank(['message' => 'Por favor, introduce el CVV.']),
                 ],
-            ])
-            ->add('calle', TextType::class, [
-                'label' => 'Calle',
-                'required' => true,
-                'constraints' => [
-                    new NotBlank(['message' => 'Por favor, introduce la calle.']),
-                ],
-            ])
-            ->add('codigoPostal', TextType::class, [
-                'label' => 'Código Postal',
-                'required' => true,
-                'constraints' => [
-                    new NotBlank(['message' => 'Por favor, introduce el código postal.']),
-                ],
-            ])
-            ->add('ciudad', TextType::class, [
-                'label' => 'Ciudad',
-                'required' => true,
-                'constraints' => [
-                    new NotBlank(['message' => 'Por favor, introduce la ciudad.']),
-                ],
-            ])
-            ->add('provincia', TextType::class, [
-                'label' => 'Provincia',
-                'required' => true,
-                'constraints' => [
-                    new NotBlank(['message' => 'Por favor, introduce la provincia.']),
-                ],
-            ])
-            ->add('pais', TextType::class, [
-                'label' => 'País',
-                'required' => true,
-                'constraints' => [
-                    new NotBlank(['message' => 'Por favor, introduce el país.']),
-                ],
             ]);
     }
 

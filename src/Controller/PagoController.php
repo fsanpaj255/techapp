@@ -63,11 +63,27 @@ class PagoController extends AbstractController
                 $numeroTarjeta = $asteriscos . $ultimosCuatroDigitos;
             }
 
+             // Obtener la primera tarjeta del usuario
+             $primeradireccion = $entityManager->getRepository(Direccion::class)->findOneBy(['usuarioid' => $usuario]);
+
+             // Obtener el número de tarjeta
+             $calle = $primeradireccion ? $primeradireccion->getCalle() : null;
+             $codigopostal = $primeradireccion ? $primeradireccion->getCodigopostal() : null;
+             $ciudad = $primeradireccion ? $primeradireccion->getCiudad() : null;
+             $provincia = $primeradireccion ? $primeradireccion->getProvincia() : null;
+             $pais = $primeradireccion ? $primeradireccion->getPais() : null;
+
+
             // Renderizar la plantilla y pasar los datos necesarios
             return $this->render('pago/index.html.twig', [
                 'productos' => $productosContados,
                 'total' => $precioTotal,
                 'numeroTarjeta' => $numeroTarjeta,
+                'calle' => $calle,
+                'codigopostal' => $codigopostal,
+                'ciudad' => $ciudad,
+                'provincia' => $provincia,
+                'pais' => $pais,
             ]);
         } else {
             // Manejar el caso cuando no se obtuvieron los datos correctamente

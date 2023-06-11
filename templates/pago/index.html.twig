@@ -16,7 +16,7 @@
 							<li><a href="#">Volver</a></li>
 							<li ><a href="#">Método de pago</a></li>
 							<li><a href="#">Direccion de envio</a></li>
-							<li class="active"><a href="#">Finalizar pedido</a></li>
+							<li class="active">Finalizar pedido</li>
 						</ul>
 					</div>
 				</div>
@@ -39,10 +39,15 @@
 							<div class="section-title">
 								<h3 class="title">Resumen del pedido</h3>
 							</div>
-							
+								<p>TARJETA UTILIZADA </p>
 							<img src="/img/metodo-de-pago.png"> {{numeroTarjeta}}
-						
+
 							
+							</div>
+							<p>DIRECCIÓN DE ENVÍO </p>
+							<div class="col-md-5 order-details">
+							<img src="/img/diresion.png"> <p>{{calle}} // {{codigopostal}} </p>
+							<p>{{ciudad}} // {{provincia}} // {{pais}}</p>
 							</div>
 						<!-- /Billing Details -->
 

@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\TarjetaRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TarjetaRepository::class)]
@@ -17,8 +16,8 @@ class Tarjeta
     #[ORM\Column(length: 16, nullable: true)]
     private ?string $numerotarjeta = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $fechaexpiracion = null;
+    #[ORM\Column(length: 5, nullable: true)]
+    private ?string $fechaexpiracion = null;
 
     #[ORM\Column(length: 3, nullable: true)]
     private ?string $cvv = null;
@@ -43,12 +42,12 @@ class Tarjeta
         return $this;
     }
 
-    public function getFechaexpiracion(): ?\DateTimeInterface
+    public function getFechaexpiracion(): ?string
     {
         return $this->fechaexpiracion;
     }
 
-    public function setFechaexpiracion(?\DateTimeInterface $fechaexpiracion): self
+    public function setFechaexpiracion(?string $fechaexpiracion): self
     {
         $this->fechaexpiracion = $fechaexpiracion;
 

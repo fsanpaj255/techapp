@@ -26,15 +26,11 @@ class TarjetaType extends AbstractType
                     new CardScheme(['schemes' => ['VISA', 'MASTERCARD'], 'message' => 'El número de tarjeta no es válido.']),
                 ],
             ])
-            ->add('fechaExpiracion', DateTimeType::class, [
+            ->add('fechaExpiracion', TextType::class, [
                 'label' => 'Fecha de expiración',
                 'required' => true,
-                'widget' => 'single_text',
-                'format' => 'yyyy-MM',
-                'html5' => false,
                 'constraints' => [
                     new NotBlank(['message' => 'Por favor, selecciona la fecha de expiración.']),
-                    new DateTime(['format' => 'Y-m', 'message' => 'La fecha de expiración no es válida.']),
                 ],
             ])
             ->add('cvv', TextType::class, [

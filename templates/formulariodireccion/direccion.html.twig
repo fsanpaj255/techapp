@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PagoController!{% endblock %}
+
+{% block body %}
+
+
+		<!-- SECTION -->
+				<!-- BREADCRUMB -->
+		<div id="breadcrumb" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<h3 class="breadcrumb-header">Dirección del pedido</h3>
+						<ul class="breadcrumb-tree">
+							<li><a href="#">Volver</a></li>
+							<li ><a href="#">Método de pago</a></li>
+							<li class="active">Direccion de envio</li>
+							<li><a href="#">Finalizar pedido</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /BREADCRUMB -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+		
+
+					<div class="col-md-7">
+						<!-- Billing Details -->
+						<div class="billing-details">
+							<div class="section-title">
+								<h3 class="title">Añadir método de pago</h3>
+                          <form id="pago-form" action="http://127.0.0.1:8000/pago" method="POST">
+							<div class="form-group">
+								{{ form_row(form.calle, {'attr': {'class':'input'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_row(form.codigopostal, {'attr': {'class':'input'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_row(form.ciudad, {'attr': {'class':'input'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_row(form.provincia, {'attr': {'class':'input'}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_row(form.pais, {'attr': {'class':'input'}}) }}
+							</div>
+							 
+							
+						</div>
+						<input type="hidden" id="productos-input" name="productos" value="">
+						<input type="hidden" id="precio-input" name="precio" value="">
+						<button type="submit" class="primary-btn order-submit">Añadir direccion<i class="fa fa-arrow-circle-right"></i></button>
+						</form>
+				
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+			</div>
+		
+		 
+{% endblock %}

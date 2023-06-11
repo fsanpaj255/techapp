@@ -49,11 +49,25 @@ class PagoController extends AbstractController
                 // El usuario no está logueado, redirigir a la página de login o mostrar un mensaje de error
                 return $this->redirectToRoute('app_login');
             }
+             // Obtener la primera tarjeta del usuario
+             $primeratarjeta = $entityManager->getRepository(Tarjeta::class)->findOneBy(['usuarioid' => $usuario]);
+
+             // Obtener el número de tarjeta
+             $numeroTarjeta = $primeratarjeta ? $primeratarjeta->getNumerotarjeta() : null;
+
+            // Reemplazar los digitos de la tarjeta para censurarla con * 
+            if ($numeroTarjeta) {
+                $longitudTarjeta = strlen($numeroTarjeta);
+                $ultimosCuatroDigitos = substr($numeroTarjeta, -4);
+                $asteriscos = str_repeat('*', $longitudTarjeta - 4);
+                $numeroTarjeta = $asteriscos . $ultimosCuatroDigitos;
+            }
 
             // Renderizar la plantilla y pasar los datos necesarios
             return $this->render('pago/index.html.twig', [
                 'productos' => $productosContados,
                 'total' => $precioTotal,
+                'numeroTarjeta' => $numeroTarjeta,
             ]);
         } else {
             // Manejar el caso cuando no se obtuvieron los datos correctamente

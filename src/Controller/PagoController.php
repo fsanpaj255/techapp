@@ -43,15 +43,13 @@ class PagoController extends AbstractController
                 }
             }
 
-             // Verificar si el usuario está logueado
-                $usuario = $this->getUser();
-                if (!$usuario) {
-                    // El usuario no está logueado, redirigir a la página de login o mostrar un mensaje de error
-                    return $this->redirectToRoute('app_login');
-                }
+            // Verificar si el usuario está logueado
+            $usuario = $this->getUser();
+            if (!$usuario) {
+                // El usuario no está logueado, redirigir a la página de login o mostrar un mensaje de error
+                return $this->redirectToRoute('app_login');
+            }
 
-            
-            
             // Renderizar la plantilla y pasar los datos necesarios
             return $this->render('pago/index.html.twig', [
                 'productos' => $productosContados,

@@ -11,7 +11,7 @@ use Twig\Environment;
 
 class enviarcorreoController extends AbstractController
 {
-    #[Route('/enviar-pedido', name: 'enviar_pedido')]
+    #[Route('/enviar-correo', name: 'app_enviarcorreo')]
     public function enviarPedido(MailerInterface $mailer, Environment $twig): Response
     {
         // Obtener los datos del pedido y del usuario
@@ -32,7 +32,7 @@ class enviarcorreoController extends AbstractController
         // Crear el mensaje de correo electrónico
         $email = (new Email())
             ->from('tu@correo.com')
-            ->to($usuario->getCorreo()) // Utiliza el correo electrónico del usuario
+            ->to($usuario->getEmail()) // Utiliza el correo electrónico del usuario
             ->subject('Confirmación de pedido')
             ->text('Adjuntamos el PDF con los detalles de tu pedido.')
             ->attachFromPath('/ruta/al/archivo/pedido.pdf');

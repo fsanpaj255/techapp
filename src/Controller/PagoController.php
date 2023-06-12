@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Pedido;
 use App\Entity\Tarjeta;
 use App\Entity\Direccion;
 use Doctrine\ORM\EntityManagerInterface;
@@ -73,6 +74,21 @@ class PagoController extends AbstractController
              $provincia = $primeradireccion ? $primeradireccion->getProvincia() : null;
              $pais = $primeradireccion ? $primeradireccion->getPais() : null;
 
+                 if ($request->request->has('btn-realizar-pedido')) {
+                // Crear una nueva instancia de Pedido
+                $pedido = new Pedido();
+
+                // Establecer el usuario logueado como el usuarioid del pedido
+                $pedido->setUsuarioid($usuario);
+
+                // Establecer los productos comprados en el pedido
+                $pedido->setProductoscomprados($productos);
+
+                // Guardar el pedido en la base de datos
+                $entityManager->persist($pedido);
+                $entityManager->flush();
+                return $this->redirectToRoute('app_landing');
+                 }
 
             // Renderizar la plantilla y pasar los datos necesarios
             return $this->render('pago/index.html.twig', [

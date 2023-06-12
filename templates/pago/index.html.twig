@@ -37,18 +37,26 @@
 						<!-- Billing Details -->
 						<div class="billing-details">
 							<div class="section-title">
-								<h3 class="title">Resumen del pedido</h3>
+								<h3 class="title">Resumen de tus datos,  <h3 class="title naranja"> {{app.user.correo}}</h3></h3>
 							</div>
-								<p>TARJETA UTILIZADA </p>
-							<img src="/img/metodo-de-pago.png"> {{numeroTarjeta}}
 
+							<div class="recuadropedido">
+								<div class="datospedido">
+								<h5>TARJETA UTILIZADA </h5>
+							<img src="/img/metodo-de-pago.png"> {{numeroTarjeta}}
+							</div>
+						</div>
 							
 							</div>
-							<p>DIRECCIÓN DE ENVÍO </p>
-							<div class="col-md-5 order-details">
-							<img src="/img/diresion.png"> <p>{{calle}} // {{codigopostal}} </p>
-							<p>{{ciudad}} // {{provincia}} // {{pais}}</p>
+							
+							
+							<div class="recuadropedido">
+							<div class="datospedido">	
+								<h5>DIRECCIÓN DE ENVÍO </h5>
+							<img src="/img/diresion.png"> {{calle}}, {{codigopostal}} {{ciudad}} , {{provincia}}, {{pais}}
 							</div>
+							</div>
+							
 						<!-- /Billing Details -->
 
 
@@ -81,7 +89,7 @@
 							</div>
 							<div class="order-col">
 								<div><strong>TOTAL</strong></div>
-								<div><strong class="order-total">{{total}}</strong></div>
+								<div><strong class="order-total">{{total}}</strong></div> 
 							</div>
 						</div>
 						<div class="input-checkbox">
@@ -91,8 +99,9 @@
 								Acepto los  <a href="#">términos y condiciones</a>
 							</label>
 						</div>
+						<form>
 						<button type="submit" class="primary-btn order-submit">Realizar pedido</button>
-					
+						</form>
 					
 					</div>
 					<!-- /Order Details -->

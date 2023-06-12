@@ -135,3 +135,18 @@
   transition: 0.5s;
 }
 
+.naranja{
+  color: #FF6919;
+}
+
+.recuadropedido{
+  margin: 5%;
+  border: 2px solid #ff5900;
+  background-color: gainsboro;
+  border-radius: 4px;
+  
+}
+
+.datospedido{
+  margin: 5%;
+}

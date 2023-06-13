@@ -1,11 +1,11 @@
 $(document).ready(function() {
   // Verificar si se ha realizado el pedido
-  var pedidoRealizado = true; // Aquí debes establecer la condición según tus necesidades
+  var pedidoRealizado = true; 
 
-  if (pedidoRealizado) {
+  $('#btn-realizar-pedido').click(function() {
     // Mostrar el modal
     mostrarModal();
-  }
+  });
 });
 
 function mostrarModal() {

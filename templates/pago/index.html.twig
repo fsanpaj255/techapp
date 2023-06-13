@@ -101,7 +101,7 @@
 						</div>
 						<form action="{{ path('app_finalizarpedido') }}" method="POST">
 							<!-- Resto del contenido -->
-							<button type="submit" class="primary-btn order-submit">Realizar pedido</button>
+							<button type="submit" class="primary-btn order-submit" id="btn-realizar-pedido">Realizar pedido</button>
 							<input type="hidden" name="usuario_id" value="{{ app.user.id }}">
 							<input type="hidden" name="productos" value="{{ productos|json_encode }}">
 						</form>

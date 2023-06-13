@@ -60,19 +60,19 @@
 							<h2 class="product-name">{{producto.nombre}}</h2>
 							<div>
 								<div class="product-rating">
+									{# <i class="fa fa-star"></i>
 									<i class="fa fa-star"></i>
 									<i class="fa fa-star"></i>
 									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
+									<i class="fa fa-star-o"></i> #}
 								</div>
-								<a class="review-link" href="#">10 Review(s) | Add your review</a>
+								{# <a class="review-link" href="#">10 Review(s) | Add your review</a> #}
 							</div>
 							<div>
-								<h3 class="product-price">{{producto.precio}} <del class="product-old-price">$990.00</del></h3>
+								<h3 class="product-price">{{producto.precio}} €</h3>
 								<span class="product-available">Disponible</span>
 							</div>
-							<p>{{producto.descripcion}}</p>
+							
 
 							<div class="product-options">
 								<label>
@@ -106,19 +106,9 @@
 								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Añadir al carrito</button>
 							</div>
 
-							<ul class="product-btns">
-								<li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
-								<li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
-							</ul>
 
 							<ul class="product-links">
-								<li>Category:</li>
-								<li><a href="#">{{producto.precio}}</a></li>
-								
-							</ul>
-
-							<ul class="product-links">
-								<li>Share:</li>
+								<li>Compartir:</li>
 								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
@@ -135,8 +125,6 @@
 							<!-- product tab nav -->
 							<ul class="tab-nav">
 								<li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
-								<li><a data-toggle="tab" href="#tab2">Details</a></li>
-								<li><a data-toggle="tab" href="#tab3">Reviews (3)</a></li>
 							</ul>
 							<!-- /product tab nav -->
 
@@ -146,13 +134,13 @@
 								<div id="tab1" class="tab-pane fade in active">
 									<div class="row">
 										<div class="col-md-12">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+											<p>{{producto.descripcion}}</p>
 										</div>
 									</div>
 								</div>
 								<!-- /tab1  -->
 
-								<!-- tab2  -->
+								{# <!-- tab2  -->
 								<div id="tab2" class="tab-pane fade in">
 									<div class="row">
 										<div class="col-md-12">
@@ -334,7 +322,7 @@
 												</form>
 											</div>
 										</div>
-										<!-- /Review Form -->
+										<!-- /Review Form --> #}
 									</div>
 								</div>
 								<!-- /tab3  -->

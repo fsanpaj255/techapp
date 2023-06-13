@@ -101,24 +101,22 @@
 											<div class="product-img">
 												<img class="img-producto-landing" src={{"img/"~producto.imageName}} alt="">
 												<div class="product-label">
-													<span class="sale">-30%</span>
-													<span class="new">NUEVO</span>
+													{# <span class="sale">-30%</span>
+													<span class="new">NUEVO</span> #}
 												</div>
 											</div>
 											<div class="product-body">
 												<p class="product-category">Categoria</p>
 												<h3 class="product-name"><a href="#">{{producto.nombre}}</a></h3>
-												<h4 class="product-price">{{producto.precio}} € <del class="product-old-price">$990.00</del></h4>
+												<h4 class="product-price">{{producto.precio}} € </h4>
 												<div class="product-rating">
+													{# <i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i> #}
 												</div>
 												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Añadir a Deseos</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Comparar</span></button>
 													<button class="quick-view" onclick="window.location.href='{{ path('app_pantalla_producto', {'id': producto.id}) }}'"><i class="fa fa-eye"></i><span class="tooltipp">Vista previa</span></button>
 												</div>
 											</div>
@@ -144,7 +142,7 @@
 		</div>
 		<!-- /SECTION -->
 
-		<!-- HOT DEAL SECTION -->
+		{# <!-- HOT DEAL SECTION -->
 		<div id="hot-deal" class="section">
 			<!-- container -->
 			<div class="container">
@@ -188,7 +186,7 @@
 			</div>
 			<!-- /container -->
 		</div>
-		<!-- /HOT DEAL SECTION -->
+		<!-- /HOT DEAL SECTION --> #}
 
 		<!-- SECTION -->
 		<div class="section">

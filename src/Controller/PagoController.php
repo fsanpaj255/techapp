@@ -17,17 +17,17 @@ class PagoController extends AbstractController
     #[Route('/pago', name: 'app_pago', methods: ['POST'])]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
-        // Obtener los datos del cuerpo de la solicitud
+        // Obtener los datos del form invisible
         $productosJson = $request->request->get('productos');
         $precioTotalJson = $request->request->get('precio');
 
-        // Decodificar los datos JSON
+        // Decodificar los json
         $productos = json_decode($productosJson, true);
         $precioTotal = json_decode($precioTotalJson, true);
 
-        // Verificar si la decodificación es exitosa y los datos no son nulos
+        // Verificar si los datos existen
         if (is_array($productos) && !empty($productos) && is_numeric($precioTotal)) {
-            // Contador de productos
+           
             $productosContados = [];
             foreach ($productos as $producto) {
                 $nombre = $producto['nombre'];
@@ -46,7 +46,6 @@ class PagoController extends AbstractController
             // Verificar si el usuario está logueado
             $usuario = $this->getUser();
             if (!$usuario) {
-                // El usuario no está logueado, redirigir a la página de login o mostrar un mensaje de error
                 return $this->redirectToRoute('app_login');
             }
              // Obtener la primera tarjeta del usuario
@@ -55,7 +54,7 @@ class PagoController extends AbstractController
              // Obtener el número de tarjeta
              $numeroTarjeta = $primeratarjeta ? $primeratarjeta->getNumerotarjeta() : null;
 
-            // Reemplazar los digitos de la tarjeta para censurarla con * 
+            // Reemplazar los digitos de la tarjeta para censurarla con * para tener intimidad de datos
             if ($numeroTarjeta) {
                 $longitudTarjeta = strlen($numeroTarjeta);
                 $ultimosCuatroDigitos = substr($numeroTarjeta, -4);
@@ -74,7 +73,6 @@ class PagoController extends AbstractController
              $pais = $primeradireccion ? $primeradireccion->getPais() : null;
 
 
-            // Renderizar la plantilla y pasar los datos necesarios
             return $this->render('pago/index.html.twig', [
                 'productos' => $productosContados,
                 'total' => $precioTotal,
@@ -86,7 +84,7 @@ class PagoController extends AbstractController
                 'pais' => $pais,
             ]);
         } else {
-            // Manejar el caso cuando no se obtuvieron los datos correctamente
+    
             return new Response('Error al obtener los datos', Response::HTTP_BAD_REQUEST);
         }
     }

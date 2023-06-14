@@ -17,13 +17,13 @@ class PantallaProductoController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $id = $request->query->get('id');
-          // Obtener el objeto Producto por su identificación
+          // Obtener el objeto Producto por su id
           $producto = $entityManager->getRepository(Producto::class)->find($id);
-            // Serializar el objeto Producto
+            
 
         return $this->render('pantalla_producto/index.html.twig',  [
             'producto' => $producto,
-            // Otros datos para la plantilla
+         
         ]);
     }
 }

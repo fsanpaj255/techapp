@@ -25,20 +25,20 @@ class ResultadoController extends AbstractController
         $producto = $productoRepository->findOneByNombreLike($nombreProducto);
 
         if (!$producto) {
-            // No se encontró ningún producto, mostrar mensaje de error
+            //si no hay producto mensaje de error
             $mensajeError = 'No se han encontrado productos.';
             return $this->render('resultado/index.html.twig', [
                 'mensajeError' => $mensajeError,
             ]);
         }
 
-        // Obtener la categoría del producto buscado
+        // Obtener la categoría 
         $categoria = $producto->getCategoria();
 
         // Obtener todos los productos que comparten la misma categoría si la categoría no es nula
         $productosRelacionados = null;
         if ($categoria !== null) {
-            // Obtener todos los productos que comparten la misma categoría
+            // Obtener todos los productos que comparten la misma categoriaa
             $productosRelacionados = $productoRepository->findRelatedProductsByCategoria($producto);
         }
 

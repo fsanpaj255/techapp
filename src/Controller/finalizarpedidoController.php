@@ -21,27 +21,24 @@ class finalizarpedidoController extends AbstractController
      // Obtener los datos del formulario
      $productosJson = $request->request->get('productos');
  
-     // Decodificar los datos JSON
+     // Decodificamos los Json
      $productos = json_decode($productosJson, true);
  
      // Obtener el usuario
      $usuario =   $usuario = $this->getUser();
  
  
-               // Crear una nueva instancia de Pedido
           $pedido = new Pedido();
 
-          // Establecer el usuario logueado como el usuarioid del pedido
+          // id del suaurio idusuario de pedido
          $pedido->setUsuarioid($usuario);
                 
-     // Establecer los productos comprados en el pedido
+     // Productos como array de productos comprados
       $pedido->setProductoscomprados($productos);
                 
-      // Guardar el pedido en la base de datos
      $entityManager->persist($pedido);
      $entityManager->flush();
  
-     // Redirigir al usuario a la página de éxito
      return $this->redirectToRoute('app_landing');
     }
 }

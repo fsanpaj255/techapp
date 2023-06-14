@@ -1,6 +1,6 @@
 $(document).ready(function() {
   // Verificar si se ha realizado el pedido
-  var pedidoRealizado = true; // Aquí debes establecer la condición según tus necesidades
+  var pedidoRealizado = true; 
 
   if (pedidoRealizado) {
     // Mostrar el modal
@@ -12,12 +12,12 @@ function mostrarModal() {
   // Mostrar el modal
   $('#pedido-realizado-modal').css('display', 'block');
 
-  // Cerrar el modal al hacer clic en la "x"
+  // Cerrar el modal al hacer clic en la x
   $('.close').click(function() {
     ocultarModal();
   });
 
-  // Cerrar el modal al hacer clic fuera del contenido
+  // Cerrar el modal al hacer click fuera del mismo 
   $(window).click(function(event) {
     if (event.target == $('#pedido-realizado-modal')[0]) {
       ocultarModal();

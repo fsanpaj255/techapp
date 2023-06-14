@@ -21,27 +21,26 @@ class AñadirTarjetaController extends AbstractController
              // Verificar si el usuario está logueado
                 $usuario = $this->getUser();
                 if (!$usuario) {
-                    // El usuario no está logueado, redirigir a la página de login o mostrar un mensaje de error
+                    // El usuario no está logueado, ir al login o mostrar un mensaje de error
                     return $this->redirectToRoute('app_login');
                 }
-                // Crear una nueva instancia de la entidad Tarjeta
+               
                 $tarjeta = new Tarjeta();
 
-                // Crear el formulario y asociarlo a la entidad Direccion
+                // Crear el formulario ¡tarjeta
                 $form = $this->createForm(TarjetaType::class, $tarjeta);
-                // Manejar la solicitud del formulario
                 $form->handleRequest($request);
 
                 if ($form->isSubmitted() && $form->isValid()) {
                     // Asignar el usuario logueado a la direccion
                     $tarjeta->setUsuarioid($usuario);
-                       // Guardar la direccion en la base de datos
+                     
                        $entityManager->persist($tarjeta);
                        $entityManager->flush();
                     return $this->redirectToRoute('app_direccion');
                 }
             
-            // Renderizar la plantilla y pasar los datos necesarios
+           
             return $this->render('formulariotarjeta/tarjeta.html.twig', [
                 'form' => $form->createView(),
             ]);

@@ -21,29 +21,24 @@ class AñadirDireccionController extends AbstractController
              // Verificar si el usuario está logueado
                 $usuario = $this->getUser();
                 if (!$usuario) {
-                    // El usuario no está logueado, redirigir a la página de login o mostrar un mensaje de error
+                    // El usuario no está logueado, ir  al login 
                     return $this->redirectToRoute('app_login');
                 }
 
-
-                // Crear una nueva instancia de la entidad Direcciond
                 $direccion = new Direccion();
 
-                // Crear el formulario y asociarlo a la entidad Direccion
+                // Crear el formulario de direccion
                 $form = $this->createForm(DireccionType::class, $direccion);
-                // Manejar la solicitud del formulario
                 $form->handleRequest($request);
 
                 if ($form->isSubmitted() && $form->isValid()) {
                     // Asignar el usuario logueado a la direccion
                     $direccion->setUsuarioid($usuario);
-                       // Guardar la direccion en la base de datos
                        $entityManager->persist($direccion);
                        $entityManager->flush();
                     return $this->redirectToRoute('app_pago');
                 }
             
-            // Renderizar la plantilla y pasar los datos necesarios
             return $this->render('formulariodireccion/direccion.html.twig', [
                 'form' => $form->createView(),
             ]);

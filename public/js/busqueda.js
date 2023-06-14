@@ -4,7 +4,7 @@ $(document).ready(function() {
   
       var nombreProducto = $('#nombre-input').val();
   
-      // Redirigir al controlador con el nombre del producto como parámetro en la URL
+      // Enviar al controller el nombre del producto como parámetro en la URL SIN USO
       window.location.href = "{{ path('resultado_busqueda') }}" + "?producto=" + encodeURIComponent(nombreProducto);
     });
   });

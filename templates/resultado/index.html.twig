@@ -235,20 +235,20 @@
 									<div class="product-body">
 										<p class="product-category">{{producto.categoria}}</p>
 										<h3 class="product-name"><a href="#">{{producto.nombre}}</a></h3>
-										<h4 class="product-price">{{producto.precio}} <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">{{producto.precio}} </h4>
 										<div class="product-rating">
+											{# <i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i> #}
 										</div>
 										<div class="product-btns">
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Ver</span></button>
+											<button class="quick-view" onclick="window.location.href='{{ path('app_pantalla_producto', {'id': producto.id}) }}'"><i class="fa fa-eye"></i><span class="tooltipp">Ver</span></button>
 										</div>
 									</div>
 									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Añadir al carrito</button>
+										<button class="add-to-cart-btn" onclick="addToCart('{{producto.id}}')"><i class="fa fa-shopping-cart"></i>Añadir al carrito</button>
 									</div>
 								</div>
 							</div>
@@ -269,18 +269,18 @@
 										<h3 class="product-name"><a href="#">{{productoRelacionado.nombre}}</a></h3>
 										<h4 class="product-price">{{productoRelacionado.precio}} <del class="product-old-price">$990.00</del></h4>
 										<div class="product-rating">
+											{# <i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i> #}
 										</div>
 										<div class="product-btns">
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Ver</span></button>
+											<button class="quick-view"><i class="fa fa-eye" onclick="window.location.href='{{ path('app_pantalla_producto', {'id': producto.id}) }}'"></i><span class="tooltipp">Ver</span></button>
 										</div>
 									</div>
 									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Añadir al carrito</button>
+										<button class="add-to-cart-btn" onclick="addToCart('{{producto.id}}')"><i class="fa fa-shopping-cart"></i>Añadir al carrito</button>
 									</div>
 								</div>
 							</div>

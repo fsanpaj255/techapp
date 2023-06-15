@@ -2,49 +2,49 @@
 {% block title %}Bienvenido{% endblock %}
 
 {% block body %}
-
-    
     <div class="section">
-    
-    <div class="container">
-    <div class="col-md-7">
-    <div class="billing-details">
-    <div class="section-title">
-    <h3 class="title">Mi perfil</h3>
-     </div>
-
-<h2>Datos de usuario:</h2>
-<ul>
-    <li><strong>Nickname:</strong> {{ usuario.nickname }}</li>
-    <li><strong>Correo:</strong> {{ usuario.correo }}</li>
-    <li><strong>Nombre:</strong> {{ usuario.nombre }}</li>
-    <li><strong>Apellidos:</strong> {{ usuario.apellidos }}</li>
-    <li><strong>DNI:</strong> {{ usuario.dni }}</li>
-</ul>
-
-<h2>Mis pedidos:</h2>
-{% if usuario.pedidoid is not empty %}
-    <ul>
-        {% for pedido in usuario.pedidoid %}
-            <li>
-                <strong>ID:</strong> {{ pedido.id }}<br>
-                <strong>Productos comprados:</strong>
-                <ul>
-                    {% for producto in pedido.productoscomprados %}
-                        {% for key, value in producto %}
-                            <li><strong>{{ key }}:</strong> {{ value }}</li>
-                        {% endfor %}
-                    {% endfor %}
-                </ul>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No tienes pedidos.</p>
-{% endif %}
-
+        <div class="container">
+            <div class="col-md-7">
+                <div class="billing-details">
+                    <div class="section-title">
+                        <h3 class="title">Mi perfil</h3>
+                    </div>
+                    <h2>Datos de usuario:</h2>
+                    <ul>
+                        <li><strong>Nickname:</strong> {{ usuario.nickname }}</li>
+                        <li><strong>Correo:</strong> {{ usuario.correo }}</li>
+                        <li><strong>Nombre:</strong> {{ usuario.nombre }}</li>
+                        <li><strong>Apellidos:</strong> {{ usuario.apellidos }}</li>
+                        <li><strong>DNI:</strong> {{ usuario.dni }}</li>
+                    </ul>
+                    <h2>Mis pedidos:</h2>
+                    {% if usuario.pedidoid is not empty %}
+                        <div id="slider-container">
+                            <div class="slider">
+                                {% for pedido in usuario.pedidoid %}
+                                    <div class="slide">
+                                        <strong>ID:</strong> {{ pedido.id }}<br>
+                                        <strong>Productos comprados:</strong>
+                                        <ul>
+                                            {% for producto in pedido.productoscomprados %}
+                                                {% for key, value in producto %}
+                                                    <li><strong>{{ key }}:</strong> {{ value }}</li>
+                                                {% endfor %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="slider-controls">
+                                <button class="prev-button" onclick="prevSlide()">&lt;</button>
+                                <button class="next-button" onclick="nextSlide()">&gt;</button>
+                            </div>
+                        </div>
+                    {% else %}
+                        <p>No tienes pedidos.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
-    </div>
-    </div>
-{% endblock %}
+    {% endblock %}

@@ -8,11 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MiPerfilController extends AbstractController
 {
-    #[Route('/mi/perfil', name: 'app_mi_perfil')]
+    #[Route('/miperfil', name: 'app_miperfil')]
     public function index(): Response
     {
-        return $this->render('mi_perfil/index.html.twig', [
-            'controller_name' => 'MiPerfilController',
+        $usuario = $this->getUser(); // Obtener el usuario logueado
+        return $this->render('perfilusuario/index.html.twig', [
+            'usuario' => $usuario,
         ]);
     }
 }

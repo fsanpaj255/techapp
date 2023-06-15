@@ -54,10 +54,14 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'usuarioid', targetEntity: Direccion::class)]
     private Collection $direccionid;
 
+    #[ORM\OneToMany(mappedBy: 'usuarioidpedido', targetEntity: Pedido::class)]
+    private Collection $pedidoid;
+
     public function __construct()
     {
         $this->tarjetaid = new ArrayCollection();
         $this->direccionid = new ArrayCollection();
+        $this->pedidoid = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -248,6 +252,36 @@ public function removeDireccionid(Direccion $direccionid): self
         // set the owning side to null (unless already changed)
         if ($direccionid->getUsuarioid() === $this) {
             $direccionid->setUsuarioid(null);
+        }
+    }
+
+    return $this;
+}
+
+/**
+ * @return Collection<int, Pedido>
+ */
+public function getPedidoid(): Collection
+{
+    return $this->pedidoid;
+}
+
+public function addPedidoid(Pedido $pedidoid): self
+{
+    if (!$this->pedidoid->contains($pedidoid)) {
+        $this->pedidoid->add($pedidoid);
+        $pedidoid->setUsuarioidpedido($this);
+    }
+
+    return $this;
+}
+
+public function removePedidoid(Pedido $pedidoid): self
+{
+    if ($this->pedidoid->removeElement($pedidoid)) {
+        // set the owning side to null (unless already changed)
+        if ($pedidoid->getUsuarioidpedido() === $this) {
+            $pedidoid->setUsuarioidpedido(null);
         }
     }
 

@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block title %}Bienvenido{% endblock %}
+
+{% block body %}
+
+    
+    <div class="section">
+    
+    <div class="container">
+    <div class="col-md-7">
+    <div class="billing-details">
+    <div class="section-title">
+    <h3 class="title">Mi perfil</h3>
+     </div>
+   <h1>Usuario</h1>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Nickname</th>
+            <th>Roles</th>
+            <th>Correo</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>DNI</th>
+            <th>Verificado</th>
+        </tr>
+        <tr>
+            <td>{{ usuario.id }}</td>
+            <td>{{ usuario.nickname }}</td>
+            <td>{{ usuario.roles|join(', ') }}</td>
+            <td>{{ usuario.correo }}</td>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.apellidos }}</td>
+            <td>{{ usuario.dni }}</td>
+            <td>{{ usuario.isVerified ? 'Sí' : 'No' }}</td>
+        </tr>
+    </table>
+    <h2>Pedidos</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Productos Comprados</th>
+        </tr>
+        {% for pedido in usuario.pedidoid %}
+            <tr>
+                <td>{{ pedido.id }}</td>
+                <td>{{ pedido.productoscomprados|join(', ') }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

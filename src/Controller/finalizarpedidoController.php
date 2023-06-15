@@ -28,16 +28,14 @@ class finalizarpedidoController extends AbstractController
      $usuario =   $usuario = $this->getUser();
  
  
-          $pedido = new Pedido();
+    // Crear un nuevo pedido
+    $pedido = new Pedido();
+    $pedido->setUsuarioidpedido($usuario);
+    $pedido->setProductoscomprados($productos);
 
-          // id del suaurio idusuario de pedido
-         $pedido->setUsuarioid($usuario);
-                
-     // Productos como array de productos comprados
-      $pedido->setProductoscomprados($productos);
-                
-     $entityManager->persist($pedido);
-     $entityManager->flush();
+    // Guardar el pedido en la base de datos
+    $entityManager->persist($pedido);
+    $entityManager->flush();
  
      return $this->redirectToRoute('app_landing');
     }

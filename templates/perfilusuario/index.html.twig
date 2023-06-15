@@ -12,42 +12,36 @@
     <div class="section-title">
     <h3 class="title">Mi perfil</h3>
      </div>
-   <h1>Usuario</h1>
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Nickname</th>
-            <th>Roles</th>
-            <th>Correo</th>
-            <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>DNI</th>
-            <th>Verificado</th>
-        </tr>
-        <tr>
-            <td>{{ usuario.id }}</td>
-            <td>{{ usuario.nickname }}</td>
-            <td>{{ usuario.roles|join(', ') }}</td>
-            <td>{{ usuario.correo }}</td>
-            <td>{{ usuario.nombre }}</td>
-            <td>{{ usuario.apellidos }}</td>
-            <td>{{ usuario.dni }}</td>
-            <td>{{ usuario.isVerified ? 'Sí' : 'No' }}</td>
-        </tr>
-    </table>
-    <h2>Pedidos</h2>
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Productos Comprados</th>
-        </tr>
+
+<h2>Datos de usuario:</h2>
+<ul>
+    <li><strong>Nickname:</strong> {{ usuario.nickname }}</li>
+    <li><strong>Correo:</strong> {{ usuario.correo }}</li>
+    <li><strong>Nombre:</strong> {{ usuario.nombre }}</li>
+    <li><strong>Apellidos:</strong> {{ usuario.apellidos }}</li>
+    <li><strong>DNI:</strong> {{ usuario.dni }}</li>
+</ul>
+
+<h2>Mis pedidos:</h2>
+{% if usuario.pedidoid is not empty %}
+    <ul>
         {% for pedido in usuario.pedidoid %}
-            <tr>
-                <td>{{ pedido.id }}</td>
-                <td>{{ pedido.productoscomprados|join(', ') }}</td>
-            </tr>
+            <li>
+                <strong>ID:</strong> {{ pedido.id }}<br>
+                <strong>Productos comprados:</strong>
+                <ul>
+                    {% for producto in pedido.productoscomprados %}
+                        {% for key, value in producto %}
+                            <li><strong>{{ key }}:</strong> {{ value }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </li>
         {% endfor %}
-    </table>
+    </ul>
+{% else %}
+    <p>No tienes pedidos.</p>
+{% endif %}
 
     </div>
     </div>

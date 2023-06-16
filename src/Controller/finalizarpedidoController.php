@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\TarjetaType;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use App\Form\DireccionType;
 
 class finalizarpedidoController extends AbstractController
@@ -36,7 +37,8 @@ class finalizarpedidoController extends AbstractController
     // Guardar el pedido en la base de datos
     $entityManager->persist($pedido);
     $entityManager->flush();
- 
-     return $this->redirectToRoute('app_landing');
+
+    // Le añadimos un true por parametro a la url para que con el jquery detecte el true y muestre el moidal
+    return new RedirectResponse($this->generateUrl('app_landing', ['modal' => 'true']));
     }
 }

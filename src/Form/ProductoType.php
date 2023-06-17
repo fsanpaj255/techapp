@@ -98,7 +98,7 @@ class ProductoType extends AbstractType
                     'class' => ''
                 ]
             ])
-            ->add('imageFile3', VichImageType::class, [
+            ->add('imageFile4', VichImageType::class, [
                 'label' => 'Cargar imagen RESTANTE',
                 'required' => false,
                 'allow_delete' => true,

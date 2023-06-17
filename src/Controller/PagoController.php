@@ -48,13 +48,16 @@ class PagoController extends AbstractController
             if (!$usuario) {
                 return $this->redirectToRoute('app_login');
             }
-             // Obtener la primera tarjeta del usuario
-             $primeratarjeta = $entityManager->getRepository(Tarjeta::class)->findOneBy(['usuarioid' => $usuario]);
+            // Obtener la última tarjeta del usuario la que acaba de introducir en el form
+            $ultimaTarjeta = $entityManager->getRepository(Tarjeta::class)->findOneBy(['usuarioid' => $usuario], ['id' => 'DESC']);
 
-             // Obtener el número de tarjeta
-             $numeroTarjeta = $primeratarjeta ? $primeratarjeta->getNumerotarjeta() : null;
-
-            // Reemplazar los digitos de la tarjeta para censurarla con * para tener intimidad de datos
+            // Obtener la última dirección del usuario
+            $ultimaDireccion = $entityManager->getRepository(Direccion::class)->findOneBy(['usuarioid' => $usuario], ['id' => 'DESC']);
+ 
+            // Obtener el número de tarjeta la que acaba de introducir en el form
+            $numeroTarjeta = $ultimaTarjeta ? $ultimaTarjeta->getNumerotarjeta() : null;
+          
+            //censurar la tarjeta con corchetes para que todos los sean menos los ultimos 4 digitos
             if ($numeroTarjeta) {
                 $longitudTarjeta = strlen($numeroTarjeta);
                 $ultimosCuatroDigitos = substr($numeroTarjeta, -4);
@@ -64,6 +67,8 @@ class PagoController extends AbstractController
 
              // Obtener la primera tarjeta del usuario
              $primeradireccion = $entityManager->getRepository(Direccion::class)->findOneBy(['usuarioid' => $usuario]);
+
+
 
              // Obtener la direccion 
              $calle = $primeradireccion ? $primeradireccion->getCalle() : null;

@@ -71,6 +71,15 @@ class Producto
     #[ORM\Column(nullable: true)]
     private ?int $imageSize3 = null;
 
+    #[Vich\UploadableField(mapping: 'producto', fileNameProperty: 'imageName4', size: 'imageSize4')]
+    private  $imageFile4 = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName4 = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $imageSize4 = null;
+
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
@@ -296,6 +305,41 @@ class Producto
         return $this->imageSize3;
     }
 
+    public function setImageFile4(?File $imageFile4 = null): void
+    {
+        $this->imageFile4 = $imageFile4;
+
+        if (null !== $imageFile4) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile4(): ?File
+    {
+        return $this->imageFile4;
+    }
+
+    public function setImageName4(?string $imageName4): void
+    {
+        $this->imageName4 = $imageName4;
+    }
+
+    public function getImageName4(): ?string
+    {
+        return $this->imageName4;
+    }
+
+    public function setImageSize4(?int $imageSize4): void
+    {
+        $this->imageSize4 = $imageSize4;
+    }
+
+    public function getImageSize4(): ?int
+    {
+        return $this->imageSize4;
+    }
 
 
     public function getCategoria(): ?string

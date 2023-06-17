@@ -98,6 +98,15 @@ class ProductoType extends AbstractType
                     'class' => ''
                 ]
             ])
+            ->add('imageFile3', VichImageType::class, [
+                'label' => 'Cargar imagen RESTANTE',
+                'required' => false,
+                'allow_delete' => true,
+                'download_label' => 'Descargar imagen',
+                'attr' => [
+                    'class' => ''
+                ]
+            ])
             ->add('categoria', ChoiceType::class, [
                 'choices' => [
                     'Portatil' => 'Portatil',

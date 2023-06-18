@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controller;
-
 use App\Repository\ProductoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,14 +19,17 @@ class ResultadoCategoriaController extends AbstractController
     #[Route('/productos/{categoria}', name: 'productos_por_categoria')]
     public function mostrarProductosPorCategoria(Request $request, string $categoria): Response
     {
-        // Obtener todos los productos por la categoría seleccionada
-        $productosPorCategoria = $this->productoRepository->findBy([
-            'categoria' => $categoria
-        ]);
+        // Obtener todos los productos
+        $todosLosProductos = $this->productoRepository->findAll();
+
+        // Filtrar los productos por la categoría seleccionada
+        $productosPorCategoria = array_filter($todosLosProductos, function ($producto) use ($categoria) {
+            return $producto->getCategoria() === $categoria;
+        });
 
         return $this->render('resultado/porcategoria.html.twig', [
             'categoria' => $categoria,
-            'productosPorCategoria' => $productosPorCategoria,
+            'productos' => $productosPorCategoria,
         ]);
     }
 }

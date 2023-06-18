@@ -3,6 +3,7 @@
 {% block title %}Mostrar Productos{% endblock %}
 
 {% block body %}
+
 <!-- SECTION -->
 		<div class="section">
 			<!-- container -->
@@ -11,25 +12,58 @@
 				<div class="row">
 					<!-- ASIDE -->
 					<div id="aside" class="col-md-3">
-					
+										<!-- aside Widget -->
+						<div class="aside">
+						</div>
+						<!-- /aside Widget -->
+						<!-- aside Widget -->
+						<div class="aside">
+						</div>
+						<!-- /aside Widget -->
+						<!-- aside Widget -->
+						<div class="aside">
+						</div>
+						
+
+						<!-- aside Widget -->
+						<div class="aside">
+							</div>
+							<div class="product-widget">
+							</div>
+							<div class="product-widget">
+							</div>
+						</div>
+						 <!-- /aside Widget -->
 					</div>
+					<!-- /ASIDE -->
+					<!-- STORE -->
+					 <div id="store" class="col-md-9">
+						<!-- store top filter -->
+						<div class="store-filter clearfix">
+							<div class="store-sort">
+								<h3>Resultados encontrados...</h3>
+							</div>
+							<ul class="store-grid">
+							</ul>
+						</div>
+						<!-- /store top filter -->
 						<!-- store products -->
 						<div class="row">
-                        {% for producto in productosPorCategoria %}
 							<!-- product -->
+							 {% for producto in productos %} 
                             	<div class="col-md-4 col-xs-6">
 								<div class="product">
 									<div class="product-img">
-										<img class="img-producto-landing" src={{"img/"~producto.imageName}} alt="">
-										{# <div class="product-label">
-											<span class="sale">-30%</span>
-											<span class="new">NEW</span>
-										</div> #}
+										<img class="img-producto-landing" src={{"./img/"~producto.imageName}} alt="">
+										 <div class="product-label">
+											{# <span class="sale">-30%</span>
+											<span class="new">NEW</span> #}
+										</div>
 									</div>
 									<div class="product-body">
 										<p class="product-category">{{producto.categoria}}</p>
 										<h3 class="product-name"><a href="#">{{producto.nombre}}</a></h3>
-										<h4 class="product-price">{{producto.precio}} </h4>
+										<h4 class="product-price">{{producto.precio}} €</h4>
 										<div class="product-rating">
 											{# <i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
@@ -46,19 +80,19 @@
 									</div>
 								</div>
 							</div>
-							<!-- /product -->
-                             {% endfor %}
+							   {% endfor %}
+                        
 
 						<!-- store bottom filter -->
 						<div class="store-filter clearfix">
-							<span class="store-qty">Showing 20-100 products</span>
+							{# <span class="store-qty">Showing 20-100 products</span>
 							<ul class="store-pagination">
 								<li class="active">1</li>
 								<li><a href="#">2</a></li>
 								<li><a href="#">3</a></li>
 								<li><a href="#">4</a></li>
 								<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-							</ul>
+							</ul> #}
 						</div>
 						<!-- /store bottom filter -->
 					</div>
@@ -70,17 +104,4 @@
 		</div>
 		<!-- /SECTION -->
 
-
-    {# <h1>Mostrar Productos por Categoría</h1>
-    <h2>Categoría: {{ categoria }}</h2>
-    
-    {% if productosPorCategoria is empty %}
-        <p>No se encontraron productos en esta categoría.</p>
-    {% else %}
-        <ul>
-            {% for producto in productosPorCategoria %}
-                <li>{{ producto.nombre }} - {{ producto.precio }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %} #}
 {% endblock %}

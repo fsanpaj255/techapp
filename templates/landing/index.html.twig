@@ -87,10 +87,14 @@
 							{# aqui meter los productos de la base de datos a continuacion #}
 							<div class="section-nav">
 								<ul class="section-tab-nav tab-nav">
-									<li class="active"><a data-toggle="tab" href="#tab1">Portátiles</a></li>
-									<li><a data-toggle="tab" href="#tab1">Teléfonos</a></li>
-									<li><a data-toggle="tab" href="#tab1">Cámaras</a></li>
-									<li><a data-toggle="tab" href="#tab1">Accesorios</a></li>
+								<li><a href="{{ path('app_landing') }}">Todos</a></li>
+								<li><a  href="{{ path('app_landing', {'categoria': 'Portátil'}) }}">Portátiles</a></li>
+								<li><a  href="{{ path('app_landing', {'categoria': 'Sobremesa'}) }}">Sobremesa</a></li>
+								<li><a  href="{{ path('app_landing', {'categoria': 'Teléfono'}) }}">Teléfono</a></li>
+								<li><a  href="{{ path('app_landing', {'categoria': 'Periférico'}) }}">Periférico</a></li>
+								<li><a  href="{{ path('app_landing', {'categoria': 'Electrodoméstico'}) }}">Electrodoméstico</a></li>
+								<li><a  href="{{ path('app_landing', {'categoria': 'Consola'}) }}">Consola</a></li>
+								<li><a  href="{{ path('app_landing', {'categoria': 'Videojuego'}) }}">Videojuego</a></li>
 								</ul>
 							</div>
 						</div>
@@ -210,10 +214,14 @@
 							<h3 class="title">Más vendidos</h3>
 							<div class="section-nav">
 								<ul class="section-tab-nav tab-nav">
-									<li class="active"><a data-toggle="tab" href="#tab2">Laptops</a></li>
-									<li><a data-toggle="tab" href="#tab2">Smartphones</a></li>
-									<li><a data-toggle="tab" href="#tab2">Cameras</a></li>
-									<li><a data-toggle="tab" href="#tab2">Accessories</a></li>
+								<li class="active"><a data-toggle="tab" href="{{ path('app_landing') }}">Ofertas</a></li>
+								<li><a data-toggle="tab" href="{{ path('app_landing', {'categoria': 'Portátiles'}) }}">Portátiles</a></li>
+								<li><a data-toggle="tab" href="{{ path('app_landing', {'categoria': 'Sobremesa'}) }}">Sobremesa</a></li>
+								<li><a data-toggle="tab" href="{{ path('app_landing', {'categoria': 'Teléfono'}) }}">Teléfono</a></li>
+								<li><a data-toggle="tab" href="{{ path('app_landing', {'categoria': 'Periférico'}) }}">Periférico</a></li>
+								<li><a data-toggle="tab" href="{{ path('app_landing', {'categoria': 'Electrodoméstico'}) }}">Electrodoméstico</a></li>
+								<li><a data-toggle="tab" href="{{ path('app_landing', {'categoria': 'Consola'}) }}">Consola</a></li>
+								<li><a data-toggle="tab" href="{{ path('app_landing', {'categoria': 'Videojuego'}) }}">Videojuego</a></li>
 								</ul>
 							</div>
 						</div>

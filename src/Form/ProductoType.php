@@ -83,8 +83,8 @@ class ProductoType extends AbstractType
                 'constraints' => [
                     new Image([
                         'maxSize' => '5M', // Tamaño máximo del archivo (por ejemplo, 5 megabytes)
-                        'maxWidth' => 800, // Ancho máximo en píxeles
-                        'maxHeight' => 600, // Altura máxima en píxeles
+                        'maxWidth' => 2000, // Ancho máximo en píxeles
+                        'maxHeight' => 1500, // Altura máxima en píxeles
                         // También puedes especificar 'minWidth', 'minHeight' para establecer restricciones mínimas
                     ]),
                 ],
@@ -100,8 +100,8 @@ class ProductoType extends AbstractType
                 'constraints' => [
                     new Image([
                         'maxSize' => '5M', // Tamaño máximo del archivo (por ejemplo, 5 megabytes)
-                        'maxWidth' => 800, // Ancho máximo en píxeles
-                        'maxHeight' => 600, // Altura máxima en píxeles
+                        'maxWidth' => 2000, // Ancho máximo en píxeles
+                        'maxHeight' => 1500, // Altura máxima en píxeles
                         // También puedes especificar 'minWidth', 'minHeight' para establecer restricciones mínimas
                     ]),
                 ],
@@ -117,8 +117,8 @@ class ProductoType extends AbstractType
                 'constraints' => [
                     new Image([
                         'maxSize' => '5M', // Tamaño máximo del archivo (por ejemplo, 5 megabytes)
-                        'maxWidth' => 800, // Ancho máximo en píxeles
-                        'maxHeight' => 600, // Altura máxima en píxeles
+                        'maxWidth' => 2000, // Ancho máximo en píxeles
+                        'maxHeight' => 1500, // Altura máxima en píxeles
                         // También puedes especificar 'minWidth', 'minHeight' para establecer restricciones mínimas
                     ]),
                 ],
@@ -134,8 +134,8 @@ class ProductoType extends AbstractType
                 'constraints' => [
                     new Image([
                         'maxSize' => '5M', // Tamaño máximo del archivo (por ejemplo, 5 megabytes)
-                        'maxWidth' => 800, // Ancho máximo en píxeles
-                        'maxHeight' => 600, // Altura máxima en píxeles
+                        'maxWidth' => 2000, // Ancho máximo en píxeles
+                        'maxHeight' => 1500, // Altura máxima en píxeles
                         // También puedes especificar 'minWidth', 'minHeight' para establecer restricciones mínimas
                     ]),
                 ],

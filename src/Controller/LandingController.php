@@ -24,10 +24,10 @@ class LandingController extends AbstractController
 
         
         foreach ($productos as $producto) {
-            $oferta = $ofertaRepository->findOneBy(['producto' => $producto]);
+            $oferta = $ofertaRepository->findOneBy(['productoid' => $producto]);
 
             if ($oferta) {
-                $producto->addOferta($oferta);
+                $producto->setOferta($oferta);
             }
         }
 

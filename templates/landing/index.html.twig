@@ -114,7 +114,9 @@
 											<div class="product-img">
 												<img class="img-producto-landing" src={{"img/"~producto.imageName}} alt="">
 												<div class="product-label">
+												 {% if producto.oferta is not null %}
 													<span class="sale">-{{ producto.oferta.porcentaje }}%</span>
+												 {% endif %}
 												</div>
 											</div>
 											<div class="product-body">

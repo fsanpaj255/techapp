@@ -88,18 +88,12 @@ class Producto
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $categoria = null;
 
-    #[ORM\OneToMany(mappedBy: 'productoid', targetEntity: Oferta::class)]
-    private Collection $ofertas;
+    #[ORM\OneToOne(mappedBy: 'productoid', targetEntity: Oferta::class)]
+    private ?Oferta $oferta = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $Preciooferta = null;
 
-
-
-    public function __construct()
-    {
-        $this->ofertas = new ArrayCollection();
-    }
 
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
@@ -369,32 +363,14 @@ class Producto
         return $this;
     }
 
-    /**
-     * @return Collection<int, Oferta>
-     */
-    public function getOfertas(): Collection
+    public function getOferta(): ?Oferta
     {
-        return $this->ofertas;
+        return $this->oferta;
     }
 
-    public function addOferta(Oferta $oferta): static
+    public function setOferta(?Oferta $oferta): self
     {
-        if (!$this->ofertas->contains($oferta)) {
-            $this->ofertas->add($oferta);
-            $oferta->setProductoid($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOferta(Oferta $oferta): static
-    {
-        if ($this->ofertas->removeElement($oferta)) {
-            // set the owning side to null (unless already changed)
-            if ($oferta->getProductoid() === $this) {
-                $oferta->setProductoid(null);
-            }
-        }
+        $this->oferta = $oferta;
 
         return $this;
     }

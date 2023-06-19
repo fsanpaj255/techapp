@@ -13,7 +13,8 @@ class Oferta
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'ofertas')]
+    #[ORM\OneToOne(targetEntity: Producto::class, inversedBy: 'oferta')]
+    #[ORM\JoinColumn(nullable: false, referencedColumnName: 'id')]
     private ?Producto $productoid = null;
 
     #[ORM\Column(nullable: true)]
@@ -29,7 +30,7 @@ class Oferta
         return $this->productoid;
     }
 
-    public function setProductoid(?Producto $productoid): static
+    public function setProductoid(?Producto $productoid): self
     {
         $this->productoid = $productoid;
 

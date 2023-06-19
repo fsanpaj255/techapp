@@ -24,23 +24,20 @@ class OfertaController extends AbstractController
     {
         $producto = $this->entityManager->getRepository(Producto::class)->find($id);
     
-        // Renderiza el formulario de descuento en Twig y pasa el producto como variable
+ 
         $formulario = $this->createForm(DescuentoType::class);
         $formulario->handleRequest($request);
     
         if ($formulario->isSubmitted() && $formulario->isValid()) {
             $porcentaje = $formulario->get('porcentaje')->getData();
     
-            // Actualiza el precio del producto aplicando el descuento
+            // Actualiza el precio del producto aplicando el descuento en ofertas
             $precio = $producto->getPrecio();
             $nuevoPrecio = $precio - ($precio * $porcentaje / 100);
             $producto->setPreciooferta($nuevoPrecio);
     
             // Guarda el producto actualizado en la base de datos
             $this->entityManager->flush();
-    
-            // Redirige a la página del producto o muestra un mensaje de éxito
-            // Reemplaza 'app_producto_index' por la ruta de tu página del producto
             return new RedirectResponse($this->generateUrl('app_producto_index', ['id' => $id]));
         }
     

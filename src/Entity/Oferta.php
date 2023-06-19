@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\OfertaRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: OfertaRepository::class)]
@@ -14,52 +13,37 @@ class Oferta
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $f_inicio = null;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $f_fin = null;
+    #[ORM\ManyToOne(inversedBy: 'ofertas')]
+    private ?Producto $productoid = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $descuento = null;
+    private ?int $porcentaje = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getFInicio(): ?\DateTimeInterface
+    public function getProductoid(): ?Producto
     {
-        return $this->f_inicio;
+        return $this->productoid;
     }
 
-    public function setFInicio(?\DateTimeInterface $f_inicio): self
+    public function setProductoid(?Producto $productoid): static
     {
-        $this->f_inicio = $f_inicio;
+        $this->productoid = $productoid;
 
         return $this;
     }
 
-    public function getFFin(): ?\DateTimeInterface
+    public function getPorcentaje(): ?int
     {
-        return $this->f_fin;
+        return $this->porcentaje;
     }
 
-    public function setFFin(?\DateTimeInterface $f_fin): self
+    public function setPorcentaje(?int $porcentaje): static
     {
-        $this->f_fin = $f_fin;
-
-        return $this;
-    }
-
-    public function getDescuento(): ?int
-    {
-        return $this->descuento;
-    }
-
-    public function setDescuento(?int $descuento): self
-    {
-        $this->descuento = $descuento;
+        $this->porcentaje = $porcentaje;
 
         return $this;
     }

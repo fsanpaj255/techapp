@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductoRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -85,6 +87,14 @@ class Producto
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $categoria = null;
+
+    #[ORM\OneToMany(mappedBy: 'productoid', targetEntity: Oferta::class)]
+    private Collection $ofertas;
+
+    public function __construct()
+    {
+        $this->ofertas = new ArrayCollection();
+    }
 
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
@@ -350,6 +360,36 @@ class Producto
     public function setCategoria(?string $categoria): self
     {
         $this->categoria = $categoria;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Oferta>
+     */
+    public function getOfertas(): Collection
+    {
+        return $this->ofertas;
+    }
+
+    public function addOferta(Oferta $oferta): static
+    {
+        if (!$this->ofertas->contains($oferta)) {
+            $this->ofertas->add($oferta);
+            $oferta->setProductoid($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOferta(Oferta $oferta): static
+    {
+        if ($this->ofertas->removeElement($oferta)) {
+            // set the owning side to null (unless already changed)
+            if ($oferta->getProductoid() === $this) {
+                $oferta->setProductoid(null);
+            }
+        }
 
         return $this;
     }

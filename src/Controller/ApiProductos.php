@@ -29,12 +29,13 @@ class ApiProductos extends AbstractController
                'precio' => $producto->getPrecio(),
                'nombre' => $producto->getNombre(),
                'descripcion' => $producto->getDescripcion(),
-               'ancho' => $producto->getAncho(),
-               'largo' => $producto->getLargo(),
                'modelo' => $producto->getModelo(),
-               'color' => $producto->getColor(),
+               'color'=> $producto->getColor(),
                'peso' => $producto->getPeso(),
-               'imageName' => $producto->getImageName()
+               'categoria' => $producto->getCategoria(),
+               'tamano' => $producto->getTamano(),
+               'imageName' => $producto->getImageName(),
+               'preciooferta' => $producto->getPreciooferta(),      
            ];
         }
   

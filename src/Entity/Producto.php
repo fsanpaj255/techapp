@@ -92,7 +92,7 @@ class Producto
     private ?Oferta $oferta = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $Preciooferta = null;
+    private ?int $preciooferta = null;
 
 
     /**
@@ -377,12 +377,12 @@ class Producto
 
     public function getPreciooferta(): ?int
     {
-        return $this->Preciooferta;
+        return $this->preciooferta;
     }
 
     public function setPreciooferta(?int $Preciooferta): static
     {
-        $this->Preciooferta = $Preciooferta;
+        $this->preciooferta = $Preciooferta;
 
         return $this;
     }

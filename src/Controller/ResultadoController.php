@@ -31,6 +31,8 @@ class ResultadoController extends AbstractController
                 'mensajeError' => $mensajeError,
             ]);
         }
+        // Obtener la oferta asociada al producto
+        $oferta = $producto->getOferta();
 
         // Obtener la categoría 
         $categoria = $producto->getCategoria();
@@ -45,6 +47,7 @@ class ResultadoController extends AbstractController
         return $this->render('resultado/index.html.twig', [
             'producto' => $producto,
             'productosRelacionados' => $productosRelacionados,
+            'oferta' => $oferta,
         ]);
     }
 }

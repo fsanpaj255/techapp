@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Form;
+use App\Entity\Oferta;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -29,7 +30,7 @@ class DescuentoType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => null,
+            'data_class' => Oferta::class, // Actualizamos la clase asociada al formulario
         ]);
     }
 }

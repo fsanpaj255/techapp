@@ -91,6 +91,11 @@ class Producto
     #[ORM\OneToMany(mappedBy: 'productoid', targetEntity: Oferta::class)]
     private Collection $ofertas;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $Preciooferta = null;
+
+
+
     public function __construct()
     {
         $this->ofertas = new ArrayCollection();
@@ -393,4 +398,17 @@ class Producto
 
         return $this;
     }
+
+    public function getPreciooferta(): ?int
+    {
+        return $this->Preciooferta;
+    }
+
+    public function setPreciooferta(?int $Preciooferta): static
+    {
+        $this->Preciooferta = $Preciooferta;
+
+        return $this;
+    }
+
 }

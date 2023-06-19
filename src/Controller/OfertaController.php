@@ -34,7 +34,7 @@ class OfertaController extends AbstractController
             // Actualiza el precio del producto aplicando el descuento
             $precio = $producto->getPrecio();
             $nuevoPrecio = $precio - ($precio * $porcentaje / 100);
-            $producto->setPrecio($nuevoPrecio);
+            $producto->setPreciooferta($nuevoPrecio);
     
             // Guarda el producto actualizado en la base de datos
             $this->entityManager->flush();

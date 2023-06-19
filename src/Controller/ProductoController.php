@@ -9,15 +9,28 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 #[Route('/producto')]
 class ProductoController extends AbstractController
 {
     #[Route('/', name: 'app_producto_index', methods: ['GET'])]
-    public function index(ProductoRepository $productoRepository): Response
+    public function index(Request $request, ProductoRepository $productoRepository, PaginatorInterface $paginator): Response
     {
+        //codigo para meter un paginador en la lista de productos
+        $query = $productoRepository->createQueryBuilder('p')
+        ->getQuery();
+
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('página', 1),
+            5 // Número de productos por página
+        );
+
         return $this->render('producto/index.html.twig', [
             'productos' => $productoRepository->findAll(),
+            'pagination' => $pagination,
+            
         ]);
     }
 

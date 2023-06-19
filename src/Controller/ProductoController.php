@@ -23,7 +23,7 @@ class ProductoController extends AbstractController
 
         $pagination = $paginator->paginate(
             $query,
-            $request->query->getInt('página', 1),
+            $request->query->getInt('page', 1),
             5 // Número de productos por página
         );
 

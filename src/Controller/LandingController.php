@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\OfertaRepository;
 use App\Repository\ProductoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class LandingController extends AbstractController
 {
     #[Route('/', name: 'app_landing')]
-    public function listadoJuegos(Request $request, ProductoRepository $productoRepository): Response
+    public function listadoprodcutos(Request $request, ProductoRepository $productoRepository, OfertaRepository $ofertaRepository): Response
     {
         $categoria = $request->query->get('categoria');
 
@@ -19,6 +20,15 @@ class LandingController extends AbstractController
             $productos = $productoRepository->findBy(['categoria' => $categoria]);
         } else {
             $productos = $productoRepository->findAll();
+        }
+
+        
+        foreach ($productos as $producto) {
+            $oferta = $ofertaRepository->findOneBy(['producto' => $producto]);
+
+            if ($oferta) {
+                $producto->addOferta($oferta);
+            }
         }
 
         return $this->render('landing/index.html.twig', [

@@ -18,9 +18,7 @@ class UsuarioType extends AbstractType
             ->add('correo')
             ->add('nombre')
             ->add('apellidos')
-            ->add('tarjeta')
             ->add('dni')
-            ->add('direccion')
             ->add('isVerified')
         ;
     }

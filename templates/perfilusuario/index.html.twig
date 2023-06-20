@@ -26,7 +26,7 @@
                         <li class='fuentenegra'><strong>DNI:</strong> {{ usuario.dni }}</li>
                         </div>
                     </ul>
-                    <a href="{{ absolute_url(path('app_editarmiperfil'))}}" class="btn btn-primary">Modificar mis datos</a>
+                    <a href="{{ absolute_url(path('app_editarmiperfil'))}}" ><img src='/img/lapizeditar.png'></a>
                     <h2>Mis pedidos:</h2>
                     {% if usuario.pedidoid is not empty %}
                         <div id="slider-container">
